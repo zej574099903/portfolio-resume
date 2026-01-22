@@ -216,7 +216,7 @@ git commit -m "docs(readme): 更新安装说明"
 
 ## 👨‍💻 作者
 
-**周恩隽 (Zhou Enjun)**
+**周恩军 (Zhou Enjun)**
 
 - 7年前端开发经验
 - 技术栈: React / Vue / Node.js / TypeScript

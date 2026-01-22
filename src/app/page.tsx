@@ -15,10 +15,10 @@
 
 export default function Home() {
   return (
-    <div className="bg-background min-h-screen">
-      {/* Hero Section - 首屏区域 */}
-      <main className="container mx-auto px-4 py-16 md:py-24">
-        <div className="flex min-h-[80vh] flex-col items-center justify-center text-center">
+    <div className="relative container">
+      <main className="flex flex-col items-center justify-center py-16 text-center md:py-24">
+        {/* Hero Section - 首屏区域 */}
+        <div className="flex min-h-[80vh] flex-col items-center justify-center">
           {/* 状态标签 */}
           <div className="border-border bg-secondary/50 mb-8 inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm backdrop-blur-sm">
             <span className="relative flex h-2 w-2">
@@ -34,7 +34,7 @@ export default function Home() {
           <h1 className="text-foreground mb-6 max-w-4xl text-4xl font-bold tracking-tight md:text-6xl lg:text-7xl">
             你好,我是{' '}
             <span className="from-primary to-primary/60 bg-gradient-to-r bg-clip-text text-transparent">
-              周恩隽
+              Liora
             </span>
           </h1>
 
@@ -157,14 +157,14 @@ export default function Home() {
       </main>
 
       {/* 临时的项目和联系部分 (占位符,待后续开发) */}
-      <section id="projects" className="bg-secondary/20 min-h-screen py-24">
+      <section id="projects" className="bg-secondary/20 py-24">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-foreground mb-4 text-3xl font-bold">项目经历</h2>
           <p className="text-muted-foreground">即将推出...</p>
         </div>
       </section>
 
-      <section id="contact" className="min-h-screen py-24">
+      <section id="contact" className="py-24">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-foreground mb-4 text-3xl font-bold">联系方式</h2>
           <p className="text-muted-foreground">即将推出...</p>

@@ -11,41 +11,56 @@
  */
 
 @import 'tailwindcss';
+@plugin 'tailwindcss-animate';
 
 /* === 设计令牌 (Design Tokens) === */
 
 :root {
   /* 颜色系统 - Light Mode */
-  --background: 0 0% 100%; /* 纯白背景 */
-  --foreground: 240 10% 3.9%; /* 深灰色文字 */
+  --background: 0 0% 100%;
+  /* 纯白背景 */
+  --foreground: 240 10% 3.9%;
+  /* 深灰色文字 */
 
-  --card: 0 0% 100%; /* 卡片背景 */
-  --card-foreground: 240 10% 3.9%; /* 卡片文字 */
+  --card: 0 0% 100%;
+  /* 卡片背景 */
+  --card-foreground: 240 10% 3.9%;
+  /* 卡片文字 */
 
   --popover: 0 0% 100%;
   --popover-foreground: 240 10% 3.9%;
 
-  --primary: 240 5.9% 10%; /* 主色调 - 深色 */
-  --primary-foreground: 0 0% 98%; /* 主色调文字 - 浅色 */
+  --primary: 240 5.9% 10%;
+  /* 主色调 - 深色 */
+  --primary-foreground: 0 0% 98%;
+  /* 主色调文字 - 浅色 */
 
-  --secondary: 240 4.8% 95.9%; /* 次要色调 */
+  --secondary: 240 4.8% 95.9%;
+  /* 次要色调 */
   --secondary-foreground: 240 5.9% 10%;
 
-  --muted: 240 4.8% 95.9%; /* 静音/禁用状态 */
+  --muted: 240 4.8% 95.9%;
+  /* 静音/禁用状态 */
   --muted-foreground: 240 3.8% 46.1%;
 
-  --accent: 240 4.8% 95.9%; /* 强调色 */
+  --accent: 240 4.8% 95.9%;
+  /* 强调色 */
   --accent-foreground: 240 5.9% 10%;
 
-  --destructive: 0 84.2% 60.2%; /* 危险/删除操作 */
+  --destructive: 0 84.2% 60.2%;
+  /* 危险/删除操作 */
   --destructive-foreground: 0 0% 98%;
 
-  --border: 240 5.9% 90%; /* 边框颜色 */
-  --input: 240 5.9% 90%; /* 输入框边框 */
-  --ring: 240 5.9% 10%; /* 焦点环颜色 */
+  --border: 240 5.9% 90%;
+  /* 边框颜色 */
+  --input: 240 5.9% 90%;
+  /* 输入框边框 */
+  --ring: 240 5.9% 10%;
+  /* 焦点环颜色 */
 
   /* 圆角 */
-  --radius: 0.5rem; /* 8px - 默认圆角 */
+  --radius: 0.5rem;
+  /* 8px - 默认圆角 */
 
   /* 字体 */
   --font-sans: var(--font-geist-sans);
@@ -156,8 +171,10 @@ body {
 }
 
 .scrollbar-hide {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
 /* 渐变文字效果 (常用于标题) */
