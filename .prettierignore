@@ -1,0 +1,23 @@
+# 依赖目录
+node_modules
+.next
+out
+
+# 构建产物
+dist
+build
+
+# 环境变量和配置
+.env
+.env*.local
+
+# 系统文件
+.DS_Store
+
+# 锁文件 (不需要格式化)
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# 日志文件
+*.log

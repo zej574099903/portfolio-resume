@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+
+# Husky Commit-msg Hook
+# 在 git commit 创建提交信息后自动运行
+# 
+# 功能：
+# 验证提交信息格式是否符合规范（通过 commitlint）
+# 
+# 规范格式示例：
+# feat(auth): 添加登录功能
+# fix(ui): 修复按钮样式
+# 
+# 不规范的提交信息将被拒绝，需要重新编写
+
+npx --no -- commitlint --edit "$1"

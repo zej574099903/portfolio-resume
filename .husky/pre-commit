@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+
+# Husky Pre-commit Hook
+# 在每次 git commit 前自动运行
+# 
+# 功能：
+# 1. 运行 lint-staged，对暂存的文件进行格式化和 lint 检查
+# 2. 如果检查不通过，提交将被中止
+# 
+# 这确保了所有进入代码库的代码都符合质量标准
+
+npx lint-staged
