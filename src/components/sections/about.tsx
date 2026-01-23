@@ -23,6 +23,70 @@ export function AboutSection() {
         </p>
       </ScrollReveal>
 
+      {/* Highlight 成就卡片 */}
+      <div className="mx-auto grid max-w-5xl grid-cols-1 gap-4 md:grid-cols-3">
+        <ScrollReveal delay={0.1}>
+          <div className="group border-border/40 relative overflow-hidden rounded-2xl border bg-gradient-to-br from-blue-500/5 to-blue-500/0 p-6 transition-all hover:border-blue-500/30 hover:shadow-lg hover:shadow-blue-500/10">
+            <div className="absolute top-0 right-0 h-24 w-24 bg-blue-500/10 blur-3xl"></div>
+            <div className="relative">
+              <div className="mb-2 text-xs font-bold tracking-wider text-blue-500 uppercase">
+                Performance
+              </div>
+              <div className="mb-1 text-4xl font-black tracking-tight">
+                +50<span className="text-blue-500">%</span>
+              </div>
+              <div className="text-muted-foreground text-sm">
+                构建速度提升
+                <br />
+                <span className="text-xs opacity-60">
+                  Qiankun 微前端架构优化
+                </span>
+              </div>
+            </div>
+          </div>
+        </ScrollReveal>
+
+        <ScrollReveal delay={0.2}>
+          <div className="group border-border/40 relative overflow-hidden rounded-2xl border bg-gradient-to-br from-green-500/5 to-green-500/0 p-6 transition-all hover:border-green-500/30 hover:shadow-lg hover:shadow-green-500/10">
+            <div className="absolute top-0 right-0 h-24 w-24 bg-green-500/10 blur-3xl"></div>
+            <div className="relative">
+              <div className="mb-2 text-xs font-bold tracking-wider text-green-500 uppercase">
+                Scale
+              </div>
+              <div className="mb-1 text-4xl font-black tracking-tight">
+                100K<span className="text-green-500">+</span>
+              </div>
+              <div className="text-muted-foreground text-sm">
+                海量数据渲染
+                <br />
+                <span className="text-xs opacity-60">
+                  Virtual List 60FPS 流畅滚动
+                </span>
+              </div>
+            </div>
+          </div>
+        </ScrollReveal>
+
+        <ScrollReveal delay={0.3}>
+          <div className="group border-border/40 relative overflow-hidden rounded-2xl border bg-gradient-to-br from-purple-500/5 to-purple-500/0 p-6 transition-all hover:border-purple-500/30 hover:shadow-lg hover:shadow-purple-500/10">
+            <div className="absolute top-0 right-0 h-24 w-24 bg-purple-500/10 blur-3xl"></div>
+            <div className="relative">
+              <div className="mb-2 text-xs font-bold tracking-wider text-purple-500 uppercase">
+                Leadership
+              </div>
+              <div className="mb-1 text-4xl font-black tracking-tight">
+                2<span className="text-purple-500">Y</span>
+              </div>
+              <div className="text-muted-foreground text-sm">
+                团队技术负责人
+                <br />
+                <span className="text-xs opacity-60">架构设计与团队管理</span>
+              </div>
+            </div>
+          </div>
+        </ScrollReveal>
+      </div>
+
       {/* Grid 容器 */}
       <div className="mx-auto grid max-w-7xl auto-rows-[minmax(180px,auto)] grid-cols-1 gap-6 md:grid-cols-12">
         {/* Card 1: 核心定位 */}
@@ -177,7 +241,7 @@ export function AboutSection() {
  * 3. 动画是可逆的 (Reversible)，上滑下滑都会触发
  * 4. 动画是平滑连续的 (Continuous)，而非一次性触发
  */
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+
 function ScrollReveal({
   children,
   className,

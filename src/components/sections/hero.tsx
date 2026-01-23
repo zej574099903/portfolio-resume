@@ -50,12 +50,12 @@ export function HeroSection() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="text-foreground text-6xl font-black tracking-tighter sm:text-7xl md:text-8xl lg:text-9xl"
+              className="text-foreground text-5xl font-black tracking-tighter sm:text-6xl md:text-7xl lg:text-8xl"
             >
-              CREATIVE
+              SENIOR FRONTEND
               <br />
               <span className="from-foreground to-foreground/50 bg-gradient-to-br bg-clip-text text-transparent">
-                DEVELOPER
+                ENGINEER
               </span>
             </motion.h1>
 
@@ -67,11 +67,13 @@ export function HeroSection() {
             >
               <p className="text-muted-foreground text-xl font-light tracking-wide md:text-2xl">
                 Hi, I&apos;m{' '}
-                <span className="text-foreground font-semibold">Liora</span>.
-                Based in Hangzhou.
+                <span className="text-foreground font-semibold">
+                  Liora Zhou (周恩军)
+                </span>
+                . Based in Hangzhou.
               </p>
               <p className="text-muted-foreground/60 mt-2 font-mono text-sm md:text-base">
-                前端工程师 · 专注高性能 Web 体验
+                7年经验 · 微前端架构 · 性能优化专家
               </p>
             </motion.div>
           </div>
@@ -85,6 +87,13 @@ export function HeroSection() {
             <Button
               size="lg"
               className="h-12 rounded-full px-8 text-base font-medium shadow-xl transition-all hover:scale-105 hover:shadow-2xl"
+              onClick={() => {
+                const projectsSection = document.getElementById('projects');
+                projectsSection?.scrollIntoView({
+                  behavior: 'smooth',
+                  block: 'start',
+                });
+              }}
             >
               View Work
               <ArrowRight className="ml-2 h-4 w-4" />
@@ -93,6 +102,15 @@ export function HeroSection() {
               size="lg"
               variant="ghost"
               className="hover:bg-secondary/50 h-12 rounded-full px-8 text-base"
+              onClick={() => {
+                const cvUrl = '/cv_file/简历-周恩军-前端-7年.pdf';
+                const link = document.createElement('a');
+                link.href = cvUrl;
+                link.download = 'Liora_Zhou_Resume.pdf';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+              }}
             >
               Download CV
               <Download className="ml-2 h-4 w-4" />
