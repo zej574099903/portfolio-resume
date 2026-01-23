@@ -1,107 +1,5 @@
-/**
- * 设计系统 - 全局样式变量定义
- *
- * 这个文件定义了整个应用的设计 tokens (设计令牌)
- * 包括颜色、间距、字体、圆角、阴影等视觉元素
- *
- * 采用 CSS 变量 (Custom Properties) 方式，便于:
- * 1. 主题切换 (Dark/Light Mode)
- * 2. 全局统一修改
- * 3. 与 Tailwind CSS 集成
- */
-
 @import 'tailwindcss';
 @plugin 'tailwindcss-animate';
-
-/* === 设计令牌 (Design Tokens) === */
-
-:root {
-  /* 颜色系统 - Light Mode */
-  --background: 0 0% 100%;
-  /* 纯白背景 */
-  --foreground: 240 10% 3.9%;
-  /* 深灰色文字 */
-
-  --card: 0 0% 100%;
-  /* 卡片背景 */
-  --card-foreground: 240 10% 3.9%;
-  /* 卡片文字 */
-
-  --popover: 0 0% 100%;
-  --popover-foreground: 240 10% 3.9%;
-
-  --primary: 240 5.9% 10%;
-  /* 主色调 - 深色 */
-  --primary-foreground: 0 0% 98%;
-  /* 主色调文字 - 浅色 */
-
-  --secondary: 240 4.8% 95.9%;
-  /* 次要色调 */
-  --secondary-foreground: 240 5.9% 10%;
-
-  --muted: 240 4.8% 95.9%;
-  /* 静音/禁用状态 */
-  --muted-foreground: 240 3.8% 46.1%;
-
-  --accent: 240 4.8% 95.9%;
-  /* 强调色 */
-  --accent-foreground: 240 5.9% 10%;
-
-  --destructive: 0 84.2% 60.2%;
-  /* 危险/删除操作 */
-  --destructive-foreground: 0 0% 98%;
-
-  --border: 240 5.9% 90%;
-  /* 边框颜色 */
-  --input: 240 5.9% 90%;
-  /* 输入框边框 */
-  --ring: 240 5.9% 10%;
-  /* 焦点环颜色 */
-
-  /* 圆角 */
-  --radius: 0.5rem;
-  /* 8px - 默认圆角 */
-
-  /* 字体 */
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-/* === 深色模式 (Dark Mode) === */
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 5.9% 10%;
-
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
-  }
-}
-
-/* === Tailwind 主题集成 === */
 
 @theme inline {
   /* 将 CSS 变量映射到 Tailwind 的颜色系统 */
@@ -148,15 +46,68 @@
 
 /* === 全局样式 === */
 
+/* 平滑滚动 - 修复导航点击无反应的问题 */
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  /* 颜色系统 - Light Mode */
+  --background: 0 0% 100%;
+  --foreground: 240 10% 3.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 240 10% 3.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 240 10% 3.9%;
+  --primary: 240 5.9% 10%;
+  --primary-foreground: 0 0% 98%;
+  --secondary: 240 4.8% 95.9%;
+  --secondary-foreground: 240 5.9% 10%;
+  --muted: 240 4.8% 95.9%;
+  --muted-foreground: 240 3.8% 46.1%;
+  --accent: 240 4.8% 95.9%;
+  --accent-foreground: 240 5.9% 10%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 240 5.9% 90%;
+  --input: 240 5.9% 90%;
+  --ring: 240 5.9% 10%;
+  --radius: 0.5rem;
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+  }
+}
+
 * {
-  /* 边框颜色继承自设计系统 */
   border-color: hsl(var(--border));
 }
 
 body {
   background: hsl(var(--background));
   color: hsl(var(--foreground));
-  /* 使用系统字体，保证最佳渲染效果 */
   font-family:
     var(--font-sans),
     system-ui,
@@ -167,12 +118,9 @@ body {
     'Helvetica Neue',
     Arial,
     sans-serif;
-  /* 优化字体渲染 */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-/* === 实用工具类 === */
 
 /* Container Centering Fix */
 .container {
@@ -189,13 +137,6 @@ body {
   }
 }
 
-/* 平滑滚动 */
-@media (prefers-reduced-motion: no-preference) {
-  html {
-    scroll-behavior: smooth;
-  }
-}
-
 /* 隐藏滚动条但保留滚动功能 */
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
@@ -203,12 +144,10 @@ body {
 
 .scrollbar-hide {
   -ms-overflow-style: none;
-  /* IE and Edge */
   scrollbar-width: none;
-  /* Firefox */
 }
 
-/* 渐变文字效果 (常用于标题) */
+/* 渐变文字效果 */
 .gradient-text {
   background: linear-gradient(
     to right,
@@ -220,7 +159,7 @@ body {
   -webkit-text-fill-color: transparent;
 }
 
-/* 毛玻璃效果 (Glassmorphism) */
+/* 毛玻璃效果 */
 .glass {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);

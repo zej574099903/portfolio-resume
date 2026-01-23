@@ -1,17 +1,39 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { StatusBadge } from '@/components/ui/status-badge';
+import { useRef } from 'react';
 
 export function HeroSection() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start start', 'end start'],
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.9]);
+  const blur = useTransform(
+    scrollYProgress,
+    [0, 0.5],
+    ['blur(0px)', 'blur(10px)']
+  );
+
   return (
-    <section className="relative flex min-h-[90vh] flex-col items-center justify-center overflow-hidden">
+    <section
+      ref={containerRef}
+      className="relative flex min-h-[100vh] flex-col items-center justify-center overflow-hidden"
+    >
       {/* 极简背景 - 更加通透 */}
       <div className="from-primary/5 via-background to-background absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))]" />
 
-      <div className="relative z-10 container px-4 md:px-6">
+      <motion.div
+        style={{ y, opacity, scale, filter: blur }}
+        className="relative z-10 container px-4 md:px-6"
+      >
         <div className="flex flex-col items-center text-center">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -92,7 +114,7 @@ export function HeroSection() {
             </div>
           </motion.div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
