@@ -20,7 +20,7 @@ export function ContactSection() {
   const [copied, setCopied] = useState(false);
 
   const onCopyEmail = () => {
-    navigator.clipboard.writeText('your.email@example.com');
+    navigator.clipboard.writeText('574099903@qq.com');
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -51,9 +51,7 @@ export function ContactSection() {
             <Button
               size="lg"
               className="shadow-primary/20 h-14 gap-2 rounded-full px-8 text-lg shadow-xl"
-              onClick={() =>
-                (window.location.href = 'mailto:your.email@example.com')
-              }
+              onClick={() => (window.location.href = 'mailto:574099903@qq.com')}
             >
               <Mail className="h-5 w-5" />
               Send an Email
@@ -66,7 +64,7 @@ export function ContactSection() {
                 className="hover:bg-secondary/50 h-14 rounded-full border-2 px-6"
                 onClick={onCopyEmail}
               >
-                <span className="mr-2 font-mono">your.email@example.com</span>
+                <span className="mr-2 font-mono">574099903@qq.com</span>
                 {copied ? (
                   <Check className="h-4 w-4 text-green-500" />
                 ) : (
@@ -80,14 +78,13 @@ export function ContactSection() {
             <ContactItem
               icon={Phone}
               label="Phone"
-              value="+86 1xx-xxxx-xxxx"
-              href="tel:+8613800000000"
+              value="+86 151-5880-2043"
+              href="tel:+8615158802043"
             />
             <ContactItem
               icon={MessageSquare}
               label="WeChat"
-              value="wx_id_sample"
-              // href="#"
+              value="15158802043"
             />
             <ContactItem
               icon={Github}
