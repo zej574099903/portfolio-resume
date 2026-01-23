@@ -1,62 +1,40 @@
-import Link from 'next/link';
-import { Github, Mail } from 'lucide-react';
+'use client';
 
-import { navConfig, siteConfig } from '@/config/site';
+import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
+import { useState } from 'react';
+
+import { navConfig } from '@/config/site';
 import { cn } from '@/lib/utils';
-import { buttonVariants } from '@/components/ui/button';
 import { MainNav } from '@/components/layout/main-nav';
 import { MobileNav } from '@/components/layout/mobile-nav';
-import { ModeToggle } from '@/components/layout/mode-toggle';
 
 export function SiteHeader() {
+  const { scrollY } = useScroll();
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useMotionValueEvent(scrollY, 'change', (latest) => {
+    const scrolled = latest > 20;
+    if (scrolled !== isScrolled) {
+      setIsScrolled(scrolled);
+    }
+  });
+
   return (
-    <header className="border-border/40 bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 w-full border-b backdrop-blur">
+    <motion.header
+      className={cn(
+        'fixed top-0 z-50 w-full transition-all duration-300',
+        isScrolled
+          ? 'bg-background/80 border-border/40 border-b shadow-sm backdrop-blur-md'
+          : 'border-transparent bg-transparent'
+      )}
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.3 }}
+    >
       <div className="container flex h-14 max-w-screen-2xl items-center">
         <MainNav items={navConfig.mainNav} />
         <MobileNav navConfig={navConfig} />
-        <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
-          <div className="w-full flex-1 md:w-auto md:flex-none">
-            {/* 可以在这里放搜索框 SearchCommand */}
-          </div>
-          <nav className="flex items-center">
-            <Link
-              href={siteConfig.links.github}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <div
-                className={cn(
-                  buttonVariants({
-                    variant: 'ghost',
-                  }),
-                  'h-9 w-9 px-0'
-                )}
-              >
-                <Github className="h-4 w-4" />
-                <span className="sr-only">GitHub</span>
-              </div>
-            </Link>
-            <Link
-              href={siteConfig.links.mail!}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <div
-                className={cn(
-                  buttonVariants({
-                    variant: 'ghost',
-                  }),
-                  'h-9 w-9 px-0'
-                )}
-              >
-                <Mail className="h-4 w-4" />
-                <span className="sr-only">Email</span>
-              </div>
-            </Link>
-            <ModeToggle />
-          </nav>
-        </div>
       </div>
-    </header>
+    </motion.header>
   );
 }

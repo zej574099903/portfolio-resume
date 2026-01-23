@@ -15,31 +15,32 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Liora - 资深前端工程师 | Senior Frontend Developer',
+  title: 'Liora - 资深全栈工程师 & 产品主理人 | Senior Full Stack Engineer',
   description:
-    '7年前端开发经验,精通 React/Vue/Next.js/TypeScript。擅长构建高性能 Web 应用和解决复杂技术问题。',
+    '7年全栈开发经验, 专注于高性能 Web 应用构建与极致用户体验设计。精通 React, Next.js, Node.js, 设计系统与互动创意。',
   keywords: [
-    '前端工程师',
-    'Frontend Developer',
+    '全栈工程师',
+    'Full Stack Engineer',
+    'Senior Product Manager',
     'React',
     'Next.js',
     'TypeScript',
-    'Vue',
-    'Node.js',
+    'Design System',
+    'Creative Developer',
   ],
   authors: [{ name: 'Liora', url: 'https://github.com/zej574099903' }],
   creator: 'Liora',
   openGraph: {
     type: 'website',
     locale: 'zh_CN',
-    title: 'Liora - 资深前端工程师',
-    description: '7年前端开发经验,精通现代前端技术栈',
+    title: 'Liora - 资深全栈工程师 & 产品主理人',
+    description: '7年全栈开发与产品经验, 打造极致 Web 体验',
     siteName: 'Liora的作品集',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Liora - 资深前端工程师',
-    description: '7年前端开发经验,精通现代前端技术栈',
+    title: 'Liora - 资深全栈工程师',
+    description: '7年全栈开发与产品经验, 打造极致 Web 体验',
   },
 };
 

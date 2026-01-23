@@ -30,10 +30,6 @@ export const navConfig = {
       title: '项目作品',
       href: '/#projects',
     },
-    {
-      title: '访客留言',
-      href: '/guestbook',
-    },
   ],
   sidebarNav: [
     {
@@ -54,10 +50,6 @@ export const navConfig = {
         {
           title: '项目作品',
           href: '/#projects',
-        },
-        {
-          title: '访客留言',
-          href: '/guestbook',
         },
       ],
     },
