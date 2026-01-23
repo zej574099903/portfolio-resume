@@ -127,21 +127,8 @@ export default function ProjectPage({
             ))}
           </div>
 
-          {/* Problem & Solution (Template Content) */}
-          <div className="space-y-8">
-            <div className="space-y-4">
-              <h3 className="text-xl font-bold">技术挑战</h3>
-              <p className="text-muted-foreground leading-relaxed">
-                面对复杂的业务需求和海量数据，系统性能和可维护性面临巨大挑战。之前的架构难以支撑快速的迭代需求，且用户体验在低端设备上不够流畅。
-              </p>
-            </div>
-            <div className="space-y-4">
-              <h3 className="text-xl font-bold">解决方案</h3>
-              <p className="text-muted-foreground leading-relaxed">
-                通过引入先进的架构模式（如微前端、虚拟列表等），并建立严格的工程化规范。重构了核心模块，大幅降低了耦合度，并对关键路径进行了深度的性能调优。
-              </p>
-            </div>
-          </div>
+          {/* Problem & Solution (根据项目定制) */}
+          {renderTechnicalDetails(project.id)}
         </div>
 
         {/* Sidebar Info */}
@@ -174,5 +161,182 @@ export default function ProjectPage({
         </div>
       </section>
     </main>
+  );
+}
+
+// 根据项目ID渲染技术细节
+function renderTechnicalDetails(projectId: string) {
+  if (projectId === 'simulation-platform') {
+    return (
+      <div className="space-y-8">
+        <div className="space-y-4">
+          <h3 className="text-xl font-bold">技术挑战</h3>
+          <p className="text-muted-foreground leading-relaxed">
+            原有的巨石应用导致：
+          </p>
+          <ul className="text-muted-foreground list-disc space-y-2 pl-6">
+            <li>多团队协作时代码冲突频繁，发布互相阻塞</li>
+            <li>单次构建耗时超过 10 分钟，严重影响开发效率</li>
+            <li>Bundle 过大（5MB+），首屏加载缓慢</li>
+          </ul>
+        </div>
+
+        <div className="space-y-4">
+          <h3 className="text-xl font-bold">Qiankun 微前端架构</h3>
+          <p className="text-muted-foreground leading-relaxed">
+            采用 Qiankun 将单体应用拆分为主应用 + 3
+            个子应用（地图模块、数据配置、回放系统）
+          </p>
+
+          <CodeBlock
+            language="typescript"
+            title="主应用注册子应用配置"
+            code={`// main-app/src/micro-app.ts
+import { registerMicroApps, start } from 'qiankun';
+
+registerMicroApps([
+  {
+    name: 'simulation-map',
+    entry: '//localhost:3001',
+    container: '#subapp-container',
+    activeRule: '/simulation',
+  },
+  {
+    name: 'data-config',
+    entry: '//localhost:3002',
+    container: '#subapp-container',
+    activeRule: '/config',
+  },
+]);
+
+start();`}
+          />
+        </div>
+
+        <div className="space-y-4">
+          <h3 className="text-xl font-bold">优化成果</h3>
+          <div className="grid grid-cols-2 gap-4">
+            <div className="rounded-xl border border-blue-500/20 bg-blue-500/5 p-4">
+              <div className="mb-1 text-2xl font-bold">
+                10min → <span className="text-blue-500">5min</span>
+              </div>
+              <div className="text-muted-foreground text-xs">构建时间减半</div>
+            </div>
+            <div className="rounded-xl border border-green-500/20 bg-green-500/5 p-4">
+              <div className="mb-1 text-2xl font-bold">
+                5MB → <span className="text-green-500">2MB</span>
+              </div>
+              <div className="text-muted-foreground text-xs">Bundle体积</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (projectId === 'qa-trajectory-monitor') {
+    return (
+      <div className="space-y-8">
+        <div className="space-y-4">
+          <h3 className="text-xl font-bold">性能瓶颈</h3>
+          <p className="text-muted-foreground leading-relaxed">
+            10万+ 轨迹数据渲染导致：
+          </p>
+          <ul className="text-muted-foreground list-disc space-y-2 pl-6">
+            <li>DOM节点过多（10万个），浏览器渲染卡死</li>
+            <li>滚动FPS低于10，用户体验极差</li>
+            <li>初次加载耗时超过 8 秒</li>
+          </ul>
+        </div>
+
+        <div className="space-y-4">
+          <h3 className="text-xl font-bold">Virtual List 虚拟列表方案</h3>
+          <p className="text-muted-foreground leading-relaxed">
+            采用 react-virtualized 只渲染可视区域的数据行
+          </p>
+
+          <CodeBlock
+            language="typescript"
+            title="Virtual List 核心实现"
+            code={`import { List } from 'react-virtualized';
+
+function TrajectoryList({ data }) {
+  // 只渲染可见区域
+  const rowRenderer = ({ index, key, style }) => (
+    <div key={key} style={style}>
+      {data[index].trajectory}
+    </div>
+  );
+
+  return (
+    <List
+      width={800}
+      height={600}
+      rowCount={data.length} // 10万+
+      rowHeight={50}
+      rowRenderer={rowRenderer}
+    />
+  );
+}`}
+          />
+        </div>
+
+        <div className="space-y-4">
+          <h3 className="text-xl font-bold">性能提升对比</h3>
+          <div className="grid grid-cols-2 gap-4">
+            <div className="rounded-xl border border-orange-500/20 bg-orange-500/5 p-4">
+              <div className="mb-1 text-2xl font-bold">
+                8s → <span className="text-orange-500">1.5s</span>
+              </div>
+              <div className="text-muted-foreground text-xs">首次渲染时间</div>
+            </div>
+            <div className="rounded-xl border border-green-500/20 bg-green-500/5 p-4">
+              <div className="mb-1 text-2xl font-bold">
+                \u003c10 → <span className="text-green-500">60</span> FPS
+              </div>
+              <div className="text-muted-foreground text-xs">滚动帧率</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // 默认通用内容
+  return (
+    <div className="space-y-8">
+      <div className="space-y-4">
+        <h3 className="text-xl font-bold">技术挑战</h3>
+        <p className="text-muted-foreground leading-relaxed">
+          面对复杂的业务需求，系统性能和可维护性面临挑战。通过引入先进的技术方案，完成了核心功能的优化与重构。
+        </p>
+      </div>
+    </div>
+  );
+}
+
+// 代码块组件
+function CodeBlock({
+  language,
+  title,
+  code,
+}: {
+  language: string;
+  title?: string;
+  code: string;
+}) {
+  return (
+    <div className="group border-border/50 bg-secondary/20 relative overflow-hidden rounded-2xl border">
+      {title && (
+        <div className="border-border/50 bg-secondary/30 border-b px-4 py-2 text-xs font-bold">
+          <span className="text-primary">{title}</span>
+        </div>
+      )}
+      <div className="relative">
+        <pre className="overflow-x-auto p-4">
+          <code className="font-mono text-xs leading-relaxed">{code}</code>
+        </pre>
+      </div>
+    </div>
   );
 }
