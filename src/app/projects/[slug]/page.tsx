@@ -302,6 +302,371 @@ function TrajectoryList({ data }) {
     );
   }
 
+  if (projectId === 'overseas-live-class') {
+    return (
+      <div className="space-y-8">
+        <div className="space-y-4">
+          <h3 className="text-xl font-bold">技术挑战</h3>
+          <p className="text-muted-foreground leading-relaxed">
+            Vue2 Options API 项目面临：
+          </p>
+          <ul className="text-muted-foreground list-disc space-y-2 pl-6">
+            <li>代码复用困难，逻辑分散在不同生命周期</li>
+            <li>Bundle 体积过大（8MB+），首屏加载缓慢</li>
+            <li>权限控制混乱，路由拦截逻辑难维护</li>
+          </ul>
+        </div>
+
+        <div className="space-y-4">
+          <h3 className="text-xl font-bold">Composition API 重构</h3>
+          <p className="text-muted-foreground leading-relaxed">
+            采用 Vue3 Composition API 重构，逻辑更内聚
+          </p>
+
+          <CodeBlock
+            language="typescript"
+            title="Composition API 逻辑复用"
+            code={`// hooks/usePermission.ts
+export function usePermission() {
+  const hasPermission = (permission: string) => {
+    return store.state.permissions.includes(permission);
+  };
+
+  const checkRoute = (route: string) => {
+    const meta = router.find(route).meta;
+    return hasPermission(meta.permission);
+  };
+
+  return { hasPermission, checkRoute };
+}`}
+          />
+        </div>
+
+        <div className="space-y-4">
+          <h3 className="text-xl font-bold">Vite 拆包优化</h3>
+          <CodeBlock
+            language="typescript"
+            title="Vite 动态拆包配置"
+            code={`// vite.config.ts
+export default {
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'video-vendor': ['video.js', 'hls.js'],
+          'ui-vendor': ['element-plus'],
+        },
+      },
+    },
+  },
+};`}
+          />
+        </div>
+
+        <div className="space-y-4">
+          <h3 className="text-xl font-bold">优化成果</h3>
+          <div className="grid grid-cols-2 gap-4">
+            <div className="rounded-xl border border-purple-500/20 bg-purple-500/5 p-4">
+              <div className="mb-1 text-2xl font-bold">
+                8MB → <span className="text-purple-500">3.2MB</span>
+              </div>
+              <div className="text-muted-foreground text-xs">
+                Bundle体积 -60%
+              </div>
+            </div>
+            <div className="rounded-xl border border-blue-500/20 bg-blue-500/5 p-4">
+              <div className="mb-1 text-2xl font-bold">
+                简洁 <span className="text-blue-500">+40%</span>
+              </div>
+              <div className="text-muted-foreground text-xs">
+                代码可读性提升
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (projectId === 'urban-visualization') {
+    return (
+      <div className="space-y-8">
+        <div className="space-y-4">
+          <h3 className="text-xl font-bold">技术挑战</h3>
+          <p className="text-muted-foreground leading-relaxed">
+            政府级可视化大屏需要：
+          </p>
+          <ul className="text-muted-foreground list-disc space-y-2 pl-6">
+            <li>数据敏感度高，需防止录屏泄露</li>
+            <li>响应式适配各种大屏尺寸（4K/2K/1080P）</li>
+            <li>实时数据更新（WebSocket 毫秒级同步）</li>
+          </ul>
+        </div>
+
+        <div className="space-y-4">
+          <h3 className="text-xl font-bold">Canvas 动态水印方案</h3>
+          <p className="text-muted-foreground leading-relaxed">
+            用 Canvas 绘制动态水印，防止截图泄露
+          </p>
+
+          <CodeBlock
+            language="typescript"
+            title="Canvas 动态水印实现"
+            code={`function addWaterMark() {
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d');
+  
+  // 绘制水印文字
+  ctx.font = '16px Arial';
+  ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+  ctx.rotate(-20 * Math.PI / 180);
+  ctx.fillText('内部数据 - 禁止外传', 0, 50);
+  
+  // 转为背景图
+  const watermark = canvas.toDataURL();
+  document.body.style.backgroundImage = \`url(\${watermark})\`;
+  
+  // 定时刷新（防止被删除）
+  setInterval(() => {
+    if (!document.body.style.backgroundImage) {
+      document.body.style.backgroundImage = \`url(\${watermark})\`;
+    }
+  }, 1000);
+}`}
+          />
+        </div>
+
+        <div className="space-y-4">
+          <h3 className="text-xl font-bold">DataV 响应式布局</h3>
+          <CodeBlock
+            language="vue"
+            title="大屏自适应方案"
+            code={`<template>
+  <dv-full-screen-container>
+    <dv-border-box-1>
+      <dv-scroll-board :config="config" />
+    </dv-border-box-1>
+  </dv-full-screen-container>
+</template>`}
+          />
+        </div>
+
+        <div className="space-y-4">
+          <h3 className="text-xl font-bold">关键特性</h3>
+          <div className="grid grid-cols-2 gap-4">
+            <div className="rounded-xl border border-orange-500/20 bg-orange-500/5 p-4">
+              <div className="mb-1 text-2xl font-bold">
+                <span className="text-orange-500">毫秒级</span>
+              </div>
+              <div className="text-muted-foreground text-xs">
+                WebSocket 同步
+              </div>
+            </div>
+            <div className="rounded-xl border border-green-500/20 bg-green-500/5 p-4">
+              <div className="mb-1 text-2xl font-bold">
+                <span className="text-green-500">全尺寸</span>
+              </div>
+              <div className="text-muted-foreground text-xs">完美适配</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (projectId === 'property-saas') {
+    return (
+      <div className="space-y-8">
+        <div className="space-y-4">
+          <h3 className="text-xl font-bold">技术挑战</h3>
+          <p className="text-muted-foreground leading-relaxed">
+            物业后台需要处理：
+          </p>
+          <ul className="text-muted-foreground list-disc space-y-2 pl-6">
+            <li>大文件上传（视频/图片 500MB+）超时失败</li>
+            <li>网络不稳定导致上传中断，需要重新上传</li>
+            <li>相同文件重复上传，浪费带宽和存储</li>
+          </ul>
+        </div>
+
+        <div className="space-y-4">
+          <h3 className="text-xl font-bold">大文件切片上传方案</h3>
+          <p className="text-muted-foreground leading-relaxed">
+            将大文件切片并行上传，支持断点续传和秒传
+          </p>
+
+          <CodeBlock
+            language="typescript"
+            title="文件切片与MD5计算"
+            code={`import SparkMD5 from 'spark-md5';
+
+function chunkFile(file: File, chunkSize = 2MB) {
+  const chunks = [];
+  let start = 0;
+  
+  while (start < file.size) {
+    chunks.push(file.slice(start, start + chunkSize));
+    start += chunkSize;
+  }
+  
+  return chunks;
+}
+
+async function calculateMD5(file: File) {
+  const spark = new SparkMD5.ArrayBuffer();
+  const reader = new FileReader();
+  
+  return new Promise((resolve) => {
+    reader.onload = (e) => {
+      spark.append(e.target.result);
+      resolve(spark.end());
+    };
+    reader.readAsArrayBuffer(file);
+  });
+}`}
+          />
+        </div>
+
+        <div className="space-y-4">
+          <h3 className="text-xl font-bold">断点续传实现</h3>
+          <CodeBlock
+            language="typescript"
+            title="上传进度持久化"
+            code={`async function uploadChunks(chunks, fileHash) {
+  // 检查已上传切片
+  const uploaded = await checkUploaded(fileHash);
+  
+  // 只上传未完成的切片
+  const tasks = chunks
+    .filter((_, i) => !uploaded.includes(i))
+    .map((chunk, i) => uploadChunk(chunk, i, fileHash));
+  
+  await Promise.all(tasks);
+  
+  // 通知后端合并
+  await mergeChunks(fileHash);
+}`}
+          />
+        </div>
+
+        <div className="space-y-4">
+          <h3 className="text-xl font-bold">优化效果</h3>
+          <div className="grid grid-cols-2 gap-4">
+            <div className="rounded-xl border border-indigo-500/20 bg-indigo-500/5 p-4">
+              <div className="mb-1 text-2xl font-bold">
+                <span className="text-indigo-500">秒传</span>
+              </div>
+              <div className="text-muted-foreground text-xs">
+                相同文件MD5命中
+              </div>
+            </div>
+            <div className="rounded-xl border border-green-500/20 bg-green-500/5 p-4">
+              <div className="mb-1 text-2xl font-bold">
+                <span className="text-green-500">续传</span>
+              </div>
+              <div className="text-muted-foreground text-xs">网络中断不怕</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (projectId === 'hello-neighbor') {
+    return (
+      <div className="space-y-8">
+        <div className="space-y-4">
+          <h3 className="text-xl font-bold">技术挑战</h3>
+          <p className="text-muted-foreground leading-relaxed">
+            小程序跨平台开发难点：
+          </p>
+          <ul className="text-muted-foreground list-disc space-y-2 pl-6">
+            <li>微信小程序、支付宝小程序 API 差异大</li>
+            <li>不同机型兼容性问题（iOS/Android）</li>
+            <li>社区动态流需要高交互体验</li>
+          </ul>
+        </div>
+
+        <div className="space-y-4">
+          <h3 className="text-xl font-bold">Uniapp 跨平台方案</h3>
+          <p className="text-muted-foreground leading-relaxed">
+            一套代码编译到微信、支付宝多端
+          </p>
+
+          <CodeBlock
+            language="vue"
+            title="条件编译处理差异"
+            code={`<template>
+  <view>
+    <!-- #ifdef MP-WEIXIN -->
+    <button open-type="share">微信分享</button>
+    <!-- #endif -->
+    
+    <!-- #ifdef MP-ALIPAY -->
+    <button @tap="alipayShare">支付宝分享</button>
+    <!-- #endif -->
+  </view>
+</template>
+
+<script>
+export default {
+  methods: {
+    // #ifdef MP-WEIXIN
+    onShareAppMessage() {
+      return { title: '分享标题' };
+    },
+    // #endif
+    
+    // #ifdef MP-ALIPAY
+    alipayShare() {
+      my.shareAppMessage({ title: '分享标题' });
+    },
+    // #endif
+  },
+};
+</script>`}
+          />
+        </div>
+
+        <div className="space-y-4">
+          <h3 className="text-xl font-bold">高性能动态流</h3>
+          <CodeBlock
+            language="vue"
+            title="虚拟列表优化"
+            code={`<template>
+  <scroll-view 
+    :scroll-y="true" 
+    @scrolltolower="loadMore"
+  >
+    <view v-for="item in visibleList" :key="item.id">
+      <post-card :data="item" />
+    </view>
+  </scroll-view>
+</template>`}
+          />
+        </div>
+
+        <div className="space-y-4">
+          <h3 className="text-xl font-bold">项目成果</h3>
+          <div className="grid grid-cols-2 gap-4">
+            <div className="rounded-xl border border-pink-500/20 bg-pink-500/5 p-4">
+              <div className="mb-1 text-2xl font-bold">
+                <span className="text-pink-500">双端</span>
+              </div>
+              <div className="text-muted-foreground text-xs">跨平台发布</div>
+            </div>
+            <div className="rounded-xl border border-purple-500/20 bg-purple-500/5 p-4">
+              <div className="mb-1 text-2xl font-bold">
+                <span className="text-purple-500">流畅</span>
+              </div>
+              <div className="text-muted-foreground text-xs">原生级体验</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   // 默认通用内容
   return (
     <div className="space-y-8">
