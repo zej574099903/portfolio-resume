@@ -1,5 +1,6 @@
 import { HeroSection } from '@/components/sections/hero';
 import { AboutSection } from '@/components/sections/about';
+import { ExperienceSection } from '@/components/sections/experience';
 
 export default function Home() {
   return (
@@ -15,11 +16,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="experience" className="py-24">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-foreground mb-4 text-3xl font-bold">工作经历</h2>
-          <p className="text-muted-foreground">即将推出...</p>
-        </div>
+      <section id="experience">
+        <ExperienceSection />
       </section>
 
       <section id="contact" className="py-24">
