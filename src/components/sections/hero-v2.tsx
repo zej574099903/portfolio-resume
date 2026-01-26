@@ -94,7 +94,7 @@ export function HeroSection() {
             className="text-foreground relative text-6xl font-black tracking-tighter md:text-8xl lg:text-9xl"
           >
             DIGITAL
-            <span className="text-muted-foreground bg-secondary/80 border-border/50 absolute -top-6 -right-8 rotate-12 rounded-full border px-3 py-1 font-mono text-sm font-normal backdrop-blur md:-top-10 md:-right-12 md:text-xl">
+            <span className="text-muted-foreground bg-secondary/80 border-border/50 absolute -top-4 -right-4 rotate-6 rounded-full border px-3 py-1 font-mono text-sm font-normal backdrop-blur md:top-2 md:-right-24 md:text-lg">
               Since 2017
             </span>
           </motion.h1>
@@ -115,15 +115,10 @@ export function HeroSection() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="text-muted-foreground mt-8 max-w-2xl text-center text-xl leading-relaxed font-light md:text-2xl"
         >
-          Merging{' '}
-          <span className="text-foreground font-semibold">
-            Product Thinking
-          </span>{' '}
-          with{' '}
-          <span className="text-foreground font-semibold">
-            Engineering Precision
-          </span>{' '}
-          to build scalable, specialized web applications.
+          以 <span className="text-foreground font-semibold">工程精度</span>{' '}
+          融合 <span className="text-foreground font-semibold">产品思维</span>{' '}
+          <br className="hidden md:block" />
+          打造可扩展、极致体验的 Web 应用。
         </motion.p>
 
         {/* 4. Action Buttons */}
@@ -145,7 +140,7 @@ export function HeroSection() {
             }}
           >
             <span className="relative z-10 flex items-center gap-2">
-              Explore Work{' '}
+              探索作品{' '}
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </span>
             <div className="absolute inset-0 translate-y-full bg-white/20 transition-transform duration-300 ease-out group-hover:translate-y-0" />
@@ -165,7 +160,7 @@ export function HeroSection() {
               document.body.removeChild(link);
             }}
           >
-            Download CV <Download className="ml-2 h-4 w-4 opacity-50" />
+            下载简历 <Download className="ml-2 h-4 w-4 opacity-50" />
           </Button>
         </motion.div>
 
@@ -179,23 +174,23 @@ export function HeroSection() {
           <div className="border-border/20 flex items-end justify-between border-t pt-6">
             <div className="hidden md:block">
               <div className="text-muted-foreground mb-1 text-xs tracking-widest uppercase">
-                Based in
+                坐标
               </div>
-              <div className="text-foreground font-medium">Hangzhou, CN</div>
+              <div className="text-foreground font-medium">中国 · 杭州</div>
             </div>
             <div className="flex gap-12 text-center md:text-right">
               <div>
                 <div className="text-muted-foreground mb-1 text-xs tracking-widest uppercase">
-                  Experience
+                  从业经验
                 </div>
-                <div className="text-foreground text-xl font-bold">7 Years</div>
+                <div className="text-foreground text-xl font-bold">7 年</div>
               </div>
               <div>
                 <div className="text-muted-foreground mb-1 text-xs tracking-widest uppercase">
-                  Focus
+                  技术方向
                 </div>
                 <div className="text-foreground text-xl font-bold">
-                  System Arch
+                  系统架构 / 产品
                 </div>
               </div>
             </div>
