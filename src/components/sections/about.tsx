@@ -78,9 +78,9 @@ export function AboutSection() {
                 2<span className="text-purple-500">Y</span>
               </div>
               <div className="text-muted-foreground text-sm">
-                团队技术负责人
+                独立负责人 & Tech Lead
                 <br />
-                <span className="text-xs opacity-60">架构设计与团队管理</span>
+                <span className="text-xs opacity-60">0-1 架构设计与研发</span>
               </div>
             </div>
           </div>
@@ -98,7 +98,7 @@ export function AboutSection() {
                   {`class Engineer {
       constructor() {
         this.passion = "High Quality";
-        this.stack = ["React", "Node"];
+        this.stack = ["React", "UniApp"];
       }
       
       deploy() {
@@ -166,11 +166,11 @@ export function AboutSection() {
                 <TechPill name="React" />
                 <TechPill name="Next.js" highlight />
                 <TechPill name="TypeScript" highlight />
-                <TechPill name="Tailwind" />
-                <TechPill name="Vue 3" />
+                <TechPill name="UniApp" />
+                <TechPill name="Umi Max" />
                 <TechPill name="Node.js" />
+                <TechPill name="Tailwind" />
                 <TechPill name="Docker" />
-                <TechPill name="Figma" />
               </div>
 
               <p className="text-muted-foreground border-border/50 mt-4 border-t pt-4 text-xs">
