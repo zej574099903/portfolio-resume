@@ -964,6 +964,78 @@ export default {
     );
   }
 
+  if (projectId === 'emmo') {
+    return (
+      <div className="space-y-8">
+        <div className="space-y-4">
+          <h3 className="text-xl font-bold">产品理念：AI 赋能心理健康</h3>
+          <p className="text-muted-foreground leading-relaxed">
+            将认知行为疗法 (CBT) 的理念融入 Prompt Engineering。Emmo
+            不仅仅是记录，更是倾听。
+          </p>
+          <div className="bg-secondary/30 border-border/50 flex aspect-video w-full items-center justify-center rounded-xl border">
+            <span className="text-muted-foreground">
+              Emmo App 界面截图 / 演示视频占位
+            </span>
+          </div>
+        </div>
+
+        <div className="space-y-4">
+          <h3 className="text-xl font-bold">技术实现：ZhipuAI + Next.js</h3>
+          <CodeBlock
+            language="typescript"
+            title="AI 情感分析流"
+            code={`// AI 分析服务
+export async function analyzeEmotion(content: string) {
+  const completion = await glm.chat.completions.create({
+    model: "glm-4",
+    messages: [
+      { role: "system", content: "你是一位专业的心理咨询师..." },
+      { role: "user", content }
+    ],
+  });
+  return completion.choices[0].message.content;
+}`}
+          />
+        </div>
+      </div>
+    );
+  }
+
+  if (projectId === 'sermon-ai') {
+    return (
+      <div className="space-y-8">
+        <div className="space-y-4">
+          <h3 className="text-xl font-bold">本地化 RAG 架构</h3>
+          <p className="text-muted-foreground leading-relaxed">
+            为保障隐私，全链路本地运行。使用 ChromaDB 作为向量存储，LangChain
+            进行检索增强。
+          </p>
+          <div className="bg-secondary/30 border-border/50 flex aspect-video w-full items-center justify-center rounded-xl border">
+            <span className="text-muted-foreground">
+              Sermon AI 运行界面截图占位
+            </span>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (projectId === 'ios-runplus') {
+    return (
+      <div className="space-y-8">
+        <div className="space-y-4">
+          <h3 className="text-xl font-bold">React Native 移动端实践</h3>
+          <div className="bg-secondary/30 border-border/50 flex aspect-video w-full items-center justify-center rounded-xl border">
+            <span className="text-muted-foreground">
+              RunPlus App 截图 (iOS/Android) 占位
+            </span>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   // 默认通用内容
   return (
     <div className="space-y-8">
@@ -972,6 +1044,11 @@ export default {
         <p className="text-muted-foreground leading-relaxed">
           面对复杂的业务需求，系统性能和可维护性面临挑战。通过引入先进的技术方案，完成了核心功能的优化与重构。
         </p>
+        <div className="bg-secondary/30 border-border/50 flex aspect-video w-full items-center justify-center rounded-xl border">
+          <span className="text-muted-foreground text-sm">
+            项目演示截图 / 架构图占位
+          </span>
+        </div>
       </div>
     </div>
   );

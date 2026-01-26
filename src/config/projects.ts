@@ -7,6 +7,10 @@ import {
   BarChart3,
   ShieldCheck,
   LayoutGrid,
+  Sparkles,
+  BookOpen,
+  Wallet,
+  Activity,
 } from 'lucide-react';
 
 export interface Project {
@@ -229,25 +233,86 @@ export const PROJECTS: Project[] = [
     color: 'text-pink-500',
   },
 
-  // --- Personal Projects (Placeholders) ---
+  // --- Personal Projects ---
   {
-    id: 'personal-component-lib',
-    title: 'My React UI Kit',
-    description: '个人维护的轻量级 React 组件库，专注于极致的动画交互体验。',
+    id: 'emmo',
+    title: 'Emmo - AI Emotion Diary',
+    description: '基于智谱 AI 的情绪分析日记应用，探索心理健康与大模型的结合。',
     fullDescription:
-      '出于兴趣开发的个人组件库探索。尝试了 Headless UI 的设计理念，结合 Framer Motion 实现了丰富的微交互动画。包含 Button, Modal, Drawer 等常用组件。',
+      'Emmo 是一个结合了 AI 治愈力量的情绪追踪应用。不同于传统日记，它集成了 ZhipuGLM 模型，能对用户的日记进行情感分析，并生成个性化的治愈建议与周报。产品旨在通过 AI 降低心理咨询的门槛，让每个人都能拥有一个 24 小时的"口袋心理咨询师"。',
+    role: 'Product Creator',
+    period: '2024',
+    tech: ['Next.js 16', 'ZhipuAI', 'MongoDB', 'Tailwind'],
+    company: 'Personal',
+    type: 'Personal',
+    category: 'Architecture',
+    metrics: [
+      { label: 'AI', value: 'GLM-4' },
+      { label: 'Stack', value: 'FullStack' },
+    ],
+    icon: Sparkles,
+    color: 'text-pink-500',
+    link: 'https://emmo-demo.vercel.app',
+  },
+  {
+    id: 'sermon-ai',
+    title: 'Sermon AI Assistant',
+    description: '本地运行的 RAG 知识库工具，基于 200+ 垂直领域书籍检索。',
+    fullDescription:
+      '针对特定领域知识检索的痛点，开发了这款本地 RAG (Retrieval-Augmented Generation) 工具。利用 ChromaDB 构建向量索引，实现了对 PDF/Epub 书籍的精准语义检索与引用。重点解决了通用大模型在垂直领域"幻觉"严重的问题，并确保了数据隐私完全本地化。',
     role: 'Creator',
     period: '2024',
-    tech: ['React', 'TypeScript', 'Framer Motion', 'Tailwind'],
+    tech: ['Python', 'LangChain', 'ChromaDB', 'RAG'],
     company: 'Personal',
     type: 'Personal',
     category: 'Open Source',
     metrics: [
-      { label: 'Stars', value: 'N/A' },
-      { label: 'Size', value: 'Light' },
+      { label: 'Books', value: '200+' },
+      { label: 'Privacy', value: '100%' },
     ],
-    icon: Layout,
-    color: 'text-cyan-500',
-    link: 'https://github.com/yourusername/ui-kit',
+    icon: BookOpen,
+    color: 'text-emerald-600',
+    // link: 'https://github.com/yourusername/sermon-ai',
+  },
+  {
+    id: 'expense-tracker',
+    title: 'Smart Expense Tracker',
+    description:
+      '全栈财务管理应用，探索 Next.js 16 Server Actions 与 MongoDB 集成。',
+    fullDescription:
+      '一个现代化的个人财务管理工具。技术上深度实践了 Next.js 16 的最新特性，移除传统的 API Route 层，通过 Server Actions 直接与 MongoDB 交互，大幅简化了全栈开发链路。产品上实现了多账户管理、预算预警及可视化报表功能。',
+    role: 'Full Stack',
+    period: '2024',
+    tech: ['Next.js 16', 'Server Actions', 'MongoDB', 'NextAuth'],
+    company: 'Personal',
+    type: 'Personal',
+    category: 'Architecture',
+    metrics: [
+      { label: 'API', value: '0-Layer' },
+      { label: 'Auth', value: 'Secure' },
+    ],
+    icon: Wallet,
+    color: 'text-cyan-600',
+    link: 'https://expense-demo.vercel.app',
+  },
+  {
+    id: 'ios-runplus',
+    title: 'RunPlus Mobile',
+    description:
+      '基于 React Native 的跑步追踪 App，探索移动端传感器与地图集成。',
+    fullDescription:
+      '一款专注于极简体验的跑步追踪应用。使用 React Native 开发，调用移动端原生 GPS 与加速度传感器接口，实现了精准的轨迹记录与配速计算。项目中重点解决了后台定位保活与地图组件的跨平台兼容性问题。',
+    role: 'Mobile Dev',
+    period: '2023',
+    tech: ['React Native', 'Expo', 'Maps SDK', 'Sensors'],
+    company: 'Personal',
+    type: 'Personal',
+    category: 'Mobile',
+    metrics: [
+      { label: 'Platform', value: 'iOS/Android' },
+      { label: 'Size', value: '<20MB' },
+    ],
+    icon: Activity,
+    color: 'text-orange-500',
   },
 ];
