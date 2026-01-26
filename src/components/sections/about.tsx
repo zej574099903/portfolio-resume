@@ -37,6 +37,10 @@ export function AboutSection() {
           <span className="text-foreground font-semibold">
             Emotional Design.
           </span>
+          <br className="hidden md:inline" />
+          <span className="text-base opacity-80">
+            理性工程构建 · 感性交互设计
+          </span>
         </p>
       </ScrollReveal>
 
@@ -45,24 +49,24 @@ export function AboutSection() {
         <StatCard
           title="Performance"
           value="+50%"
-          label="Build Speed"
-          subLabel="Qiankun Optimization"
+          label="构建速度提升"
+          subLabel="Qiankun 微前端优化"
           color="blue"
           delay={0.1}
         />
         <StatCard
           title="Scale"
           value="100K+"
-          label="Data Rendering"
-          subLabel="Virtual List 60FPS"
+          label="大数据渲染"
+          subLabel="虚拟列表 60FPS"
           color="green"
           delay={0.2}
         />
         <StatCard
           title="Leadership"
           value="2Y"
-          label="Tech Lead"
-          subLabel="0-1 Architecture"
+          label="技术负责人"
+          subLabel="0-1 架构搭建"
           color="purple"
           delay={0.3}
         />
@@ -97,24 +101,24 @@ export function AboutSection() {
                 </div>
 
                 <h3 className="mb-6 text-3xl leading-[1.1] font-bold tracking-tight md:text-5xl">
-                  &quot;Code is functional art. <br />
+                  &quot;代码是运行的艺术。 <br />
                   <span className="text-muted-foreground">
-                    It should be beautiful inside out.&quot;
+                    由内而外，皆需优雅。&quot;
                   </span>
                 </h3>
 
                 <div className="mt-auto flex flex-wrap gap-3">
                   <FeatureTag
                     icon={<Cpu className="h-3 w-3" />}
-                    text="High Performance"
+                    text="极致性能"
                   />
                   <FeatureTag
                     icon={<Layout className="h-3 w-3" />}
-                    text="Pixel Perfect"
+                    text="像素级还原"
                   />
                   <FeatureTag
                     icon={<Globe className="h-3 w-3" />}
-                    text="SEO Friendly"
+                    text="SEO 友好"
                   />
                 </div>
               </div>
@@ -179,7 +183,7 @@ export function AboutSection() {
                 <div>
                   <h4 className="text-lg font-bold">Full Stack Capable</h4>
                   <p className="text-muted-foreground text-xs">
-                    Database Design & API Development
+                    数据库设计 (MySQL) 与 API 开发
                   </p>
                 </div>
               </div>
