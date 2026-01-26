@@ -17,7 +17,7 @@ interface Job {
 
 const EXPERIENCES: Job[] = [
   {
-    company: 'Silergytest (硅力杰)',
+    company: 'Silergytest (矽测微)',
     role: 'Tech Lead / 独立负责人',
     period: '2024.12 - Present',
     achievements: [

@@ -151,11 +151,8 @@ export default function ProjectPage({
           </div>
 
           <div className="flex flex-col gap-3">
-            <Button size="lg" className="w-full rounded-xl">
-              在线演示 <ExternalLink className="ml-2 h-4 w-4" />
-            </Button>
-            <p className="text-muted-foreground text-center text-xs">
-              * 部分项目为企业内部系统，仅展示脱敏Demo
+            <p className="text-muted-foreground text-center text-xs italic">
+              * 该项目为企业内部系统，技术细节仅供参考
             </p>
           </div>
         </div>
@@ -310,6 +307,162 @@ export function useScan(onScan: (code: string) => void) {
       </div>
     );
   }
+
+  if (projectId === 'silergy-bi') {
+    return (
+      <div className="space-y-8">
+        <div className="space-y-4">
+          <h3 className="text-xl font-bold">可视化与性能挑战</h3>
+          <p className="text-muted-foreground leading-relaxed">
+            在 TV 端大屏展示 200+ 高密度传感器数据，面临：
+          </p>
+          <ul className="text-muted-foreground list-disc space-y-2 pl-6">
+            <li>数据点重叠遮挡，严重影响可读性</li>
+            <li>数千个 DOM 元素频繁更新导致渲染帧率低</li>
+            <li>WebSocket 弱网环境下连接不稳定</li>
+          </ul>
+        </div>
+
+        <div className="space-y-4">
+          <h3 className="text-xl font-bold">动态碰撞避让算法</h3>
+          <p className="text-muted-foreground leading-relaxed">
+            自研高效的动态布局算法，实时计算数据卡片位置，自动避让重叠。
+          </p>
+
+          <CodeBlock
+            language="typescript"
+            title="Silergy Layout Algorithm"
+            code={`// 动态布局核心逻辑 (简化版)
+const computeDynamicLayout = (hotspots, screenW, screenH) => {
+  const occupied = []; // 已占用区域
+  
+  return hotspots.map(item => {
+    // 优先级: Right -> Left -> Down
+    const directions = ['right', 'left', 'down'];
+    let finalDir = 'down';
+    let finalBox = null;
+    
+    for (let dir of directions) {
+      const box = calculateBox(item, dir);
+      if (!isColliding(box, occupied)) {
+        finalDir = dir;
+        finalBox = box;
+        break;
+      }
+    }
+    
+    // 如果所有方向都冲突，回退到 Down 并叠加
+    if (!finalBox) finalBox = calculateBox(item, 'down');
+    
+    occupied.push(finalBox);
+    return { ...item, dir: finalDir };
+  });
+}`}
+          />
+        </div>
+
+        <div className="space-y-4">
+          <h3 className="text-xl font-bold">Canvas 混合渲染</h3>
+          <p className="text-muted-foreground leading-relaxed">
+            采用 Canvas 绘制底层热力图与发光连线，DOM 层仅显示数据卡片。
+          </p>
+
+          <CodeBlock
+            language="typescript"
+            title="Canvas 径向渐变热力图"
+            code={`const drawHeatmap = (ctx, items) => {
+  items.forEach(item => {
+    // 创建径向渐变 (圆心 x,y, 半径 r)
+    const grd = ctx.createCircularGradient(item.x, item.y, item.r);
+    
+    // 根据温度映射颜色 (20°C~30°C)
+    const [r, g, b] = getTempColor(item.temp);
+    
+    grd.addColorStop(0, \`rgba(\${r}, \${g}, \${b}, 0.5)\`);
+    grd.addColorStop(1, \`rgba(\${r}, \${g}, \${b}, 0)\`);
+    
+    ctx.setFillStyle(grd);
+    ctx.beginPath();
+    ctx.arc(item.x, item.y, item.r, 0, 2 * Math.PI);
+    ctx.fill();
+    
+    // 绘制科技感连接线
+    drawTechLine(ctx, item);
+  });
+  ctx.draw();
+}`}
+          />
+        </div>
+      </div>
+    );
+  }
+
+  if (projectId === 'silergy-ep') {
+    return (
+      <div className="space-y-8">
+        <div className="space-y-4">
+          <h3 className="text-xl font-bold">企业架构统一化</h3>
+          <p className="text-muted-foreground leading-relaxed">
+            解决多系统账号割裂、UI 风格不统一、权限管理分散的痛点：
+          </p>
+          <ul className="text-muted-foreground list-disc space-y-2 pl-6">
+            <li>实现 OAuth2 单点登录中心，打通 10+ 业务系统</li>
+            <li>统一 RBAC 权限模型，实现菜单、按钮级的细粒度控制</li>
+            <li>标准化微应用接入协议，降低新应用接入成本</li>
+          </ul>
+        </div>
+
+        <div className="space-y-4">
+          <h3 className="text-xl font-bold">OAuth2 SSO 封装</h3>
+          <p className="text-muted-foreground leading-relaxed">
+            封装通用的 SSO 登录组件与路由守卫，实现无感静默登录。
+          </p>
+
+          <CodeBlock
+            language="typescript"
+            title="SSO 登录守卫"
+            code={`// 路由拦截器
+export const onRouterChange = async (to, from, next) => {
+  const token = getToken();
+  
+  if (token) {
+    if (to.path === '/login') next('/');
+    else next();
+  } else {
+    // 检查是否有授权码
+    const code = getQueryString('code');
+    if (code) {
+      await handleOAuthCallback(code);
+      next('/');
+    } else {
+      // 携带当前页面地址，跳转至认证中心
+      window.location.href = \`\${AUTH_URL}?redirect=\${encodeURIComponent(window.location.href)}\`;
+    }
+  }
+}`}
+          />
+        </div>
+
+        <div className="space-y-4">
+          <h3 className="text-xl font-bold">建设成果</h3>
+          <div className="grid grid-cols-2 gap-4">
+            <div className="rounded-xl border border-indigo-500/20 bg-indigo-500/5 p-4">
+              <div className="mb-1 text-2xl font-bold">
+                <span className="text-indigo-500">10+</span> Apps
+              </div>
+              <div className="text-muted-foreground text-xs">统一接入管理</div>
+            </div>
+            <div className="rounded-xl border border-blue-500/20 bg-blue-500/5 p-4">
+              <div className="mb-1 text-2xl font-bold">
+                <span className="text-blue-500">100%</span>
+              </div>
+              <div className="text-muted-foreground text-xs">账号互通率</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
   if (projectId === 'simulation-platform') {
     return (
       <div className="space-y-8">
@@ -436,7 +589,7 @@ function TrajectoryList({ data }) {
             </div>
             <div className="rounded-xl border border-green-500/20 bg-green-500/5 p-4">
               <div className="mb-1 text-2xl font-bold">
-                \u003c10 → <span className="text-green-500">60</span> FPS
+                10 → <span className="text-green-500">60</span> FPS
               </div>
               <div className="text-muted-foreground text-xs">滚动帧率</div>
             </div>

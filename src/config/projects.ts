@@ -6,6 +6,7 @@ import {
   Smartphone,
   BarChart3,
   ShieldCheck,
+  LayoutGrid,
 } from 'lucide-react';
 
 export interface Project {
@@ -21,7 +22,8 @@ export interface Project {
     | 'Performance'
     | 'Open Source'
     | 'Mobile'
-    | 'Visualization';
+    | 'Visualization'
+    | 'Infrastructure';
   metrics: { label: string; value: string }[];
   icon: LucideIcon;
   color: string;
@@ -62,6 +64,41 @@ export const PROJECTS: Project[] = [
     ],
     icon: Smartphone,
     color: 'text-green-600',
+  },
+  {
+    id: 'silergy-bi',
+    title: 'Silergy Data Insight BI',
+    description: '基于 Canvas 的实时温湿度监测大屏，采用动态避让算法优化展示。',
+    fullDescription:
+      '专为工厂环境设计的 TV 端可视化大屏。基于 UniApp + Canvas 绘制实时温湿度热力图，内置 WebSocket 心跳重连与数据压缩机制。独创"动态碰撞避让"算法，确保高密度传感器数据在电视大屏上的无遮挡展示。',
+    role: 'Lead Developer',
+    period: '2025',
+    tech: ['UniApp', 'Canvas', 'WebSocket', 'DCloud'],
+    category: 'Visualization',
+    metrics: [
+      { label: 'Latency', value: '<50ms' },
+      { label: 'Sensors', value: '200+' },
+    ],
+    icon: BarChart3,
+    color: 'text-purple-600',
+  },
+  {
+    id: 'silergy-ep',
+    title: 'Silergy Enterprise Portal',
+    description:
+      '统一身份认证与应用聚合门户，实现 SSO 单点登录与 RBAC 权限控制。',
+    fullDescription:
+      '硅力杰企业级应用门户，集成了内部所有业务系统的统一入口。实现了基于 OAuth2 的单点登录(SSO)中心，提供细粒度的 RBAC 权限管理，并标准化了各子系统的接入规范与 UI 风格。',
+    role: 'Tech Lead',
+    period: '2024',
+    tech: ['React', 'OAuth2', 'Ant Design', 'Umi'],
+    category: 'Architecture',
+    metrics: [
+      { label: 'Apps', value: '10+' },
+      { label: 'Uptime', value: '99.9%' },
+    ],
+    icon: LayoutGrid,
+    color: 'text-indigo-600',
   },
   {
     id: 'simulation-platform',
