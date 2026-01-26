@@ -310,18 +310,7 @@ function ProjectCard({ project }: { project: (typeof PROJECTS)[0] }) {
     </motion.div>
   );
 
-  if (isPersonal && project.link) {
-    return (
-      <a
-        href={project.link}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="block h-full"
-      >
-        {CardContent}
-      </a>
-    );
-  }
+  // All projects link internally to their detail page
   return (
     <Link href={`/projects/${project.id}`} className="block h-full">
       {CardContent}
