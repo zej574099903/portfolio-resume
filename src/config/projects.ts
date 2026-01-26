@@ -255,7 +255,7 @@ export const PROJECTS: Project[] = [
     ],
     icon: PenTool,
     color: 'text-purple-500',
-    // link: 'https://story-craft-demo.vercel.app',
+    link: 'https://story-craft-demo.vercel.app',
   },
   {
     id: 'note-pwa',
@@ -275,7 +275,7 @@ export const PROJECTS: Project[] = [
     ],
     icon: StickyNote,
     color: 'text-yellow-500',
-    // link: 'https://note-pwa-demo.vercel.app',
+    link: 'https://note-pwa-demo.vercel.app',
   },
   {
     id: 'the-mouth-app',
@@ -295,7 +295,7 @@ export const PROJECTS: Project[] = [
     ],
     icon: Bot,
     color: 'text-indigo-500',
-    // link: 'https://apps.apple.com/app/id...',
+    link: 'https://apps.apple.com/app/the-mouth',
   },
   {
     id: 'blog',
@@ -315,7 +315,7 @@ export const PROJECTS: Project[] = [
     ],
     icon: Book,
     color: 'text-emerald-500',
-    // link: 'https://my-blog-demo.vercel.app',
+    link: 'https://my-blog-demo.vercel.app',
   },
   {
     id: 'emmo',
@@ -335,7 +335,7 @@ export const PROJECTS: Project[] = [
     ],
     icon: Sparkles,
     color: 'text-pink-500',
-    // link: 'https://emmo-demo.vercel.app',
+    link: 'https://emmo-demo.vercel.app',
   },
   {
     id: 'expense-tracker',
@@ -356,7 +356,7 @@ export const PROJECTS: Project[] = [
     ],
     icon: Wallet,
     color: 'text-cyan-600',
-    // link: 'https://expense-demo.vercel.app',
+    link: 'https://expense-demo.vercel.app',
   },
   {
     id: 'ios-runplus',
@@ -377,5 +377,6 @@ export const PROJECTS: Project[] = [
     ],
     icon: Activity,
     color: 'text-orange-500',
+    link: 'https://github.com/zhouenjun/runplus-demo',
   },
 ];

@@ -4,7 +4,6 @@ import { PROJECTS } from '@/config/projects';
 import { notFound } from 'next/navigation';
 import { motion } from 'framer-motion';
 import {
-  ArrowLeft,
   Bot,
   Smartphone,
   WifiOff,
@@ -12,17 +11,14 @@ import {
   Sparkles,
   Wallet,
   Activity,
-  Calendar,
-  User,
-  Code2,
 } from 'lucide-react';
-import Link from 'next/link';
 import {
   MicroFrontendDiagram,
   PerformanceMeter,
 } from '@/components/projects/project-visuals';
 import { cn } from '@/lib/utils';
 import { CompanyProjectLayout } from '@/components/projects/company-layout';
+import { PersonalProjectLayout } from '@/components/projects/personal-layout';
 import { use } from 'react';
 
 export default function ProjectPage({
@@ -64,53 +60,11 @@ export default function ProjectPage({
     );
   };
 
+  // 默认使用个人项目布局 (The "Product Maker" Layout)
   return (
-    <main className="min-h-screen pb-24">
-      {/* Header / Hero */}
-      <section className="container mx-auto max-w-5xl px-6 pt-32 pb-16">
-        <Link
-          href="/"
-          className="text-muted-foreground hover:text-foreground mb-8 inline-flex items-center text-sm transition-colors"
-        >
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          返回首页
-        </Link>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="space-y-6"
-        >
-          <div className="mb-6 flex flex-wrap items-center gap-4">
-            <span
-              className={cn(
-                'bg-secondary/50 rounded-full px-3 py-1 font-mono text-xs font-bold uppercase',
-                project.color
-              )}
-            >
-              {project.category}
-            </span>
-            <div className="text-muted-foreground flex items-center gap-2 text-sm">
-              <Calendar className="h-4 w-4" />
-              <span>{project.period}</span>
-            </div>
-            <div className="text-muted-foreground flex items-center gap-2 text-sm">
-              <User className="h-4 w-4" />
-              <span>{project.role}</span>
-            </div>
-          </div>
-
-          <h1 className="text-4xl font-extrabold tracking-tight md:text-6xl">
-            {project.title}
-          </h1>
-          <p className="text-muted-foreground max-w-3xl text-xl leading-relaxed md:text-2xl">
-            {project.description}
-          </p>
-        </motion.div>
-      </section>
-
-      {/* Visual X-Ray Section */}
-      <section className="container mx-auto mb-20 max-w-5xl px-6">
+    <PersonalProjectLayout project={project}>
+      {/* Visual X-Ray Section (Kept from original) */}
+      <section className="mb-20">
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -120,65 +74,9 @@ export default function ProjectPage({
         </motion.div>
       </section>
 
-      {/* Content Body */}
-      <section className="container mx-auto grid max-w-4xl gap-12 px-6 md:grid-cols-[2fr_1fr] md:gap-24">
-        <div className="space-y-12">
-          {/* Overview */}
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold">项目概述</h2>
-            <p className="text-muted-foreground text-lg leading-relaxed whitespace-pre-line">
-              {project.fullDescription}
-            </p>
-          </div>
-
-          {/* Key Metrics Grid */}
-          <div className="grid grid-cols-2 gap-4">
-            {project.metrics.map((m, i) => (
-              <div
-                key={i}
-                className="bg-secondary/20 border-border/50 rounded-2xl border p-6"
-              >
-                <div className="mb-1 font-mono text-3xl font-bold">
-                  {m.value}
-                </div>
-                <div className="text-muted-foreground text-xs tracking-wider uppercase">
-                  {m.label}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Problem & Solution (根据项目定制) */}
-          {renderTechnicalDetails(project.id)}
-        </div>
-
-        {/* Sidebar Info */}
-        <div className="space-y-8">
-          <div className="border-border/50 bg-card rounded-3xl border p-6">
-            <h3 className="mb-4 flex items-center gap-2 font-bold">
-              <Code2 className="h-4 w-4" />
-              技术栈
-            </h3>
-            <div className="flex flex-wrap gap-2">
-              {project.tech.map((t) => (
-                <span
-                  key={t}
-                  className="bg-secondary/50 border-border/50 rounded-lg border px-3 py-1.5 text-xs font-medium"
-                >
-                  {t}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          <div className="flex flex-col gap-3">
-            <p className="text-muted-foreground text-center text-xs italic">
-              * 该项目为企业内部系统，技术细节仅供参考
-            </p>
-          </div>
-        </div>
-      </section>
-    </main>
+      {/* Render Specific Project Details */}
+      {renderTechnicalDetails(project.id)}
+    </PersonalProjectLayout>
   );
 }
 
