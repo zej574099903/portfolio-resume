@@ -94,9 +94,6 @@ export function HeroSection() {
             className="text-foreground relative text-6xl font-black tracking-tighter md:text-8xl lg:text-9xl"
           >
             DIGITAL
-            <span className="text-muted-foreground bg-secondary/80 border-border/50 absolute -top-4 -right-4 rotate-6 rounded-full border px-3 py-1 font-mono text-sm font-normal backdrop-blur md:top-2 md:-right-24 md:text-lg">
-              Since 2017
-            </span>
           </motion.h1>
           <motion.h1
             initial={{ opacity: 0, scale: 0.9 }}

@@ -8,7 +8,7 @@ export function StatusBadge() {
         <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500"></span>
       </span>
       <span className="text-secondary-foreground/80 group-hover:text-primary text-sm font-medium transition-colors">
-        开放工作机会 | Open to Work
+        寻找工作机会 | Open to Work
       </span>
     </div>
   );
