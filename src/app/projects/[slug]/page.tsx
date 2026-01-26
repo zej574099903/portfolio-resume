@@ -2,7 +2,6 @@
 
 import { PROJECTS } from '@/config/projects';
 import { notFound } from 'next/navigation';
-import { motion } from 'framer-motion';
 import {
   Bot,
   Smartphone,
@@ -12,11 +11,6 @@ import {
   Wallet,
   Activity,
 } from 'lucide-react';
-import {
-  MicroFrontendDiagram,
-  PerformanceMeter,
-} from '@/components/projects/project-visuals';
-import { cn } from '@/lib/utils';
 import { CompanyProjectLayout } from '@/components/projects/company-layout';
 import { PersonalProjectLayout } from '@/components/projects/personal-layout';
 import { use } from 'react';
@@ -26,7 +20,6 @@ export default function ProjectPage({
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  // Next.js 15+ 需要用 use() 来解包 params Promise
   const { slug } = use(params);
   const project = PROJECTS.find((p) => p.id === slug);
 
@@ -34,7 +27,6 @@ export default function ProjectPage({
     notFound();
   }
 
-  // 针对公司项目，使用全新的"架构师"布局
   if (project.type === 'Company') {
     return (
       <CompanyProjectLayout project={project}>
@@ -43,38 +35,9 @@ export default function ProjectPage({
     );
   }
 
-  // 决定显示哪个特殊的可视化组件
-  const renderVisual = () => {
-    if (project.id === 'simulation-platform') return <MicroFrontendDiagram />;
-    if (project.id === 'qa-trajectory-monitor') return <PerformanceMeter />;
-    // 默认显示一个通用的占位图或渐变
-    return (
-      <div
-        className={cn(
-          'border-border/50 bg-secondary/10 flex h-[400px] w-full items-center justify-center rounded-3xl border',
-          project.color
-        )}
-      >
-        <project.icon className="h-24 w-24 opacity-20" />
-      </div>
-    );
-  };
-
   // 默认使用个人项目布局 (The "Product Maker" Layout)
   return (
     <PersonalProjectLayout project={project}>
-      {/* Visual X-Ray Section (Kept from original) */}
-      <section className="mb-20">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.2 }}
-        >
-          {renderVisual()}
-        </motion.div>
-      </section>
-
-      {/* Render Specific Project Details */}
       {renderTechnicalDetails(project.id)}
     </PersonalProjectLayout>
   );
