@@ -88,7 +88,7 @@ export function ExperienceSection() {
           </span>
         </div>
         <h2 className="mb-6 text-3xl font-bold tracking-tight sm:text-4xl">
-          工程之旅 · Experience
+          职业足迹 · Experience
         </h2>
         <p className="text-muted-foreground text-lg">
           从像素级还原则到复杂架构设计，每一步都算数。

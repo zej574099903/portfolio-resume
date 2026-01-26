@@ -187,7 +187,7 @@ export function HeroSection() {
                   技术方向
                 </div>
                 <div className="text-foreground text-xl font-bold">
-                  系统架构 / 产品
+                  前端开发工程师
                 </div>
               </div>
             </div>
