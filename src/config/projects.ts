@@ -13,6 +13,7 @@ import {
   PenTool,
   Book,
   StickyNote,
+  Activity,
 } from 'lucide-react';
 
 export interface Project {
@@ -356,5 +357,25 @@ export const PROJECTS: Project[] = [
     icon: Wallet,
     color: 'text-cyan-600',
     // link: 'https://expense-demo.vercel.app',
+  },
+  {
+    id: 'ios-runplus',
+    title: 'RunPlus Mobile',
+    description:
+      '基于 React Native 的跑步追踪 App，探索移动端传感器与地图集成。',
+    fullDescription:
+      '一款专注于极简体验的跑步追踪应用。使用 React Native 开发，调用移动端原生 GPS 与加速度传感器接口，实现了精准的轨迹记录与配速计算。项目中重点解决了后台定位保活与地图组件的跨平台兼容性问题。',
+    role: 'Mobile Dev',
+    period: '2023',
+    tech: ['React Native', 'Expo', 'Maps SDK', 'Sensors'],
+    company: 'Personal',
+    type: 'Personal',
+    category: 'Mobile',
+    metrics: [
+      { label: 'Platform', value: 'iOS/Android' },
+      { label: 'Size', value: '<20MB' },
+    ],
+    icon: Activity,
+    color: 'text-orange-500',
   },
 ];

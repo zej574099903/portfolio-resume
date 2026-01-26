@@ -3,14 +3,26 @@
 import { PROJECTS } from '@/config/projects';
 import { notFound } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Calendar, User, Code2, ExternalLink } from 'lucide-react';
+import {
+  ArrowLeft,
+  Bot,
+  Smartphone,
+  WifiOff,
+  Layout,
+  Sparkles,
+  Wallet,
+  Activity,
+  Calendar,
+  User,
+  Code2,
+} from 'lucide-react';
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
 import {
   MicroFrontendDiagram,
   PerformanceMeter,
 } from '@/components/projects/project-visuals';
 import { cn } from '@/lib/utils';
+import { CompanyProjectLayout } from '@/components/projects/company-layout';
 import { use } from 'react';
 
 export default function ProjectPage({
@@ -24,6 +36,15 @@ export default function ProjectPage({
 
   if (!project) {
     notFound();
+  }
+
+  // 针对公司项目，使用全新的"架构师"布局
+  if (project.type === 'Company') {
+    return (
+      <CompanyProjectLayout project={project}>
+        {renderTechnicalDetails(project.id)}
+      </CompanyProjectLayout>
+    );
   }
 
   // 决定显示哪个特殊的可视化组件
@@ -163,6 +184,9 @@ export default function ProjectPage({
 
 // 根据项目ID渲染技术细节
 function renderTechnicalDetails(projectId: string) {
+  const project = PROJECTS.find((p) => p.id === projectId);
+  if (!project) return null;
+
   if (projectId === 'silergy-erp') {
     return (
       <div className="space-y-8">
@@ -966,148 +990,490 @@ export default {
 
   if (projectId === 'emmo') {
     return (
-      <div className="space-y-8">
-        <div className="space-y-4">
-          <h3 className="text-xl font-bold">产品理念：AI 赋能心理健康</h3>
-          <p className="text-muted-foreground leading-relaxed">
-            将认知行为疗法 (CBT) 的理念融入 Prompt Engineering。Emmo
-            不仅仅是记录，更是倾听。
-          </p>
-          <div className="bg-secondary/30 border-border/50 flex aspect-video w-full items-center justify-center rounded-xl border">
-            <span className="text-muted-foreground">
-              Emmo App 界面截图 / 演示视频占位
+      <div className="space-y-12">
+        <section className="space-y-4">
+          <div className="mb-2 flex items-center gap-2 text-pink-600">
+            <span className="rounded-md bg-pink-100 p-1">
+              <Sparkles className="h-4 w-4" />
+            </span>
+            <span className="text-sm font-bold tracking-wider uppercase">
+              AI Product Design
             </span>
           </div>
-        </div>
+          <h3 className="text-2xl font-bold">
+            做有温度的 AI：情感计算的治愈力
+          </h3>
+          <p className="text-muted-foreground text-lg leading-relaxed">
+            我们每天都在产生情绪，但很少有人能准确&ldquo;看见&rdquo;它们。作为一个关注心理健康的产品，Emmo
+            的愿景是用 AI 接住每一份情绪。
+            <br />
+            <br />
+            <strong>产品策略：</strong> 摒弃传统日记的流水账模式，结合{' '}
+            <strong>CBT (认知行为疗法)</strong> 原理，让 AI
+            化身为&ldquo;共情者&rdquo;。它不评判，只倾听，并提供客观的情绪归因分析。
+          </p>
+        </section>
 
-        <div className="space-y-4">
+        <section className="grid grid-cols-1 gap-4 md:grid-cols-2">
+          <div className="bg-secondary/30 border-border/50 rounded-2xl border p-6">
+            <h4 className="mb-2 font-bold">💡 RAG-Enhanced Therapy</h4>
+            <p className="text-muted-foreground text-sm">
+              利用向量数据库存储用户长期的情绪碎片。当用户感到焦虑时，AI
+              能够回溯其历史高光时刻
+              (Highligts)，提供基于事实的治愈建议，而非空洞的安慰。
+            </p>
+          </div>
+          <div className="rounded-2xl border border-pink-500/30 bg-pink-500/10 p-6">
+            <h4 className="mb-2 font-bold text-pink-700">
+              📊 Sentiment Visualization
+            </h4>
+            <p className="text-muted-foreground text-sm">
+              &quot;看见情绪&quot;是治愈的第一步。通过 NLP 分析日记的情感极性
+              (Polarity)，自动生成周/月情绪波动图谱，帮助用户建立对自我的觉察。
+            </p>
+          </div>
+        </section>
+
+        <section className="space-y-4">
           <h3 className="text-xl font-bold">技术实现：ZhipuAI + Next.js</h3>
           <CodeBlock
-            language="typescript"
-            title="AI 情感分析流"
+            title="AI 情感分析流 (Prompt Chain)"
             code={`// AI 分析服务
 export async function analyzeEmotion(content: string) {
   const completion = await glm.chat.completions.create({
     model: "glm-4",
     messages: [
-      { role: "system", content: "你是一位专业的心理咨询师..." },
+      { role: "system", content: \`You are an empathic counselor using CBT methodology.
+Key tasks:
+1. Identify specific emotions (Joy, Anxiety, etc.)
+2. Detect cognitive distortions (e.g., Catastrophizing)
+3. Provide a warm, non-judgmental response\` },
       { role: "user", content }
     ],
   });
   return completion.choices[0].message.content;
 }`}
           />
-        </div>
+        </section>
       </div>
     );
   }
 
   if (projectId === 'story-craft') {
     return (
-      <div className="space-y-8">
-        <div className="space-y-4">
-          <h3 className="text-xl font-bold">魔法创作流程</h3>
-          <p className="text-muted-foreground leading-relaxed">
-            StoryCraft 将 AI
-            技术无缝融入亲子阅读场景。只需一个创意，即可生成完整的绘本。
-          </p>
-          <div className="bg-secondary/30 border-border/50 flex aspect-video w-full items-center justify-center rounded-xl border">
-            <span className="text-muted-foreground">
-              生成的绘本页面截图 / 翻页效果演示
+      <div className="space-y-12">
+        {/* 产品思维：痛点与洞察 */}
+        <section className="space-y-4">
+          <div className="mb-2 flex items-center gap-2 text-purple-600">
+            <span className="rounded-md bg-purple-100 p-1">
+              <Bot className="h-4 w-4" />
+            </span>
+            <span className="text-sm font-bold tracking-wider uppercase">
+              Product Insight
             </span>
           </div>
-        </div>
+          <h3 className="text-2xl font-bold">为什么开发这个产品？</h3>
+          <p className="text-muted-foreground text-lg leading-relaxed">
+            作为一名开发者，我发现现有的儿童绘本 App
+            往往内容固定，缺乏互动性。家长在讲故事时，常常面临&ldquo;故事荒&rdquo;或&ldquo;内容同质化&rdquo;的痛点。
+            <br />
+            <br />
+            <strong>我的思考：</strong> 如果能让 AI
+            根据孩子的即时想法（比如&ldquo;一只想飞的企鹅&rdquo;）实时生成绘本，不仅能解决内容供给问题，还能激发孩子的创造力。这不仅是一个技术
+            Demo，更是一个尝试重构亲子阅读体验的 <strong>SaaS 产品雏形</strong>
+            。
+          </p>
+        </section>
 
-        <div className="space-y-4">
-          <h3 className="text-xl font-bold">技术栈亮点</h3>
-          <div className="grid grid-cols-2 gap-4">
-            <div className="rounded-xl border border-purple-500/20 bg-purple-500/10 p-4">
-              <div className="mb-1 text-lg font-bold text-purple-600">
-                Next.js 16
-              </div>
-              <div className="text-muted-foreground text-xs">
-                Server Actions + App Router
-              </div>
-            </div>
-            <div className="rounded-xl border border-blue-500/20 bg-blue-500/10 p-4">
-              <div className="mb-1 text-lg font-bold text-blue-600">
-                Multi-AI
-              </div>
-              <div className="text-muted-foreground text-xs">
-                ZhipuGLM (Text) + Flux (Image)
-              </div>
+        {/* 核心价值卡片 */}
+        <section className="grid grid-cols-1 gap-4 md:grid-cols-3">
+          <div className="bg-secondary/30 border-border/50 space-y-2 rounded-2xl border p-6">
+            <div className="text-2xl">🎨</div>
+            <h4 className="font-bold">AIGC 落地</h4>
+            <p className="text-muted-foreground text-xs">
+              多模态整合：文本(Zhipu) + 图像(Flux) + 语音(TTS) 的完整管线。
+            </p>
+          </div>
+          <div className="bg-secondary/30 border-border/50 space-y-2 rounded-2xl border p-6">
+            <div className="text-2xl">📖</div>
+            <h4 className="font-bold">沉浸式体验</h4>
+            <p className="text-muted-foreground text-xs">
+              引入 Turn.js 3D
+              翻页与其理逻辑，打造&quot;实体书&quot;般的电子阅读感。
+            </p>
+          </div>
+          <div className="bg-secondary/30 border-border/50 space-y-2 rounded-2xl border p-6">
+            <div className="text-2xl">🔐</div>
+            <h4 className="font-bold">商业化潜力</h4>
+            <p className="text-muted-foreground text-xs">
+              设计了基于 NextAuth 的账户体系与内容持久化，为订阅制打下基础。
+            </p>
+          </div>
+        </section>
+
+        {/* 视觉展示 */}
+        <section className="space-y-4">
+          <h3 className="text-xl font-bold">产品界面演示</h3>
+          <div className="bg-secondary/30 border-border/50 group relative flex aspect-video w-full items-center justify-center overflow-hidden rounded-xl border">
+            {/* 此处预留真实截图位置，目前使用 CSS 模拟占位效果 */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-purple-500/10 to-blue-500/10" />
+            <div className="z-10 space-y-2 text-center">
+              <span className="text-muted-foreground block font-mono text-sm">
+                Run: npm run dev
+              </span>
+              <span className="text-muted-foreground block text-xs opacity-70">
+                Screen Capture Placeholder
+              </span>
             </div>
           </div>
-        </div>
+        </section>
+
+        {/* 技术深度 */}
+        <section className="space-y-4">
+          <h3 className="text-xl font-bold">
+            技术实现：Next.js 16 Server Actions
+          </h3>
+          <p className="text-muted-foreground">
+            为了简化前后端交互，本项目完全移除了传统的 API Routes，全面采用{' '}
+            <strong>Server Actions</strong> 处理 AI 生成请求。这不仅减少了 40%
+            的胶水代码，还保证了 Key 的安全性。
+          </p>
+          <CodeBlock
+            language="typescript"
+            title="Server Actions 里的 AI 编排"
+            code={`// app/actions/generate-story.ts
+'use server'
+
+export async function generateStory(prompt: string) {
+  // 1. 权限校验
+  const session = await auth();
+  if (!session) throw new Error('Unauthorized');
+
+  // 2. 并行生成：文本与分镜描述
+  const storyStream = await zhipu.generateStream(prompt);
+  
+  // 3. 流式返回前端，提升首字体验 (TTFT)
+  return createStreamableValue(storyStream);
+}`}
+          />
+        </section>
       </div>
     );
   }
 
   if (projectId === 'the-mouth-app') {
     return (
-      <div className="space-y-8">
-        <div className="space-y-4">
-          <h3 className="text-xl font-bold">React Native 原生体验</h3>
-          <p className="text-muted-foreground leading-relaxed">
-            极致模仿 iOS 原生设计规范，提供流畅的“嘴替”体验。
-          </p>
-          <div className="bg-secondary/30 border-border/50 flex aspect-video w-full items-center justify-center rounded-xl border">
-            <span className="text-muted-foreground">
-              The Mouth App 运行截图 (iOS Simulator)
+      <div className="space-y-12">
+        <section className="space-y-4">
+          <div className="mb-2 flex items-center gap-2 text-indigo-600">
+            <span className="rounded-md bg-indigo-100 p-1">
+              <Smartphone className="h-4 w-4" />
+            </span>
+            <span className="text-sm font-bold tracking-wider uppercase">
+              Mobile UX Insight
             </span>
           </div>
-        </div>
+          <h3 className="text-2xl font-bold">
+            为&ldquo;社恐&rdquo;打造的社交外挂
+          </h3>
+          <p className="text-muted-foreground text-lg leading-relaxed">
+            在社交压力日益增长的今天，很多人面对棘手的聊天场景（如拒绝请求、高情商回复）会感到焦虑。
+            <br />
+            <br />
+            <strong>产品定位：</strong> &quot;The Mouth&quot; 不仅仅是一个 AI
+            聊天机器人，它是用户的 <strong>社交替身</strong>
+            。通过预设不同的人格面具（Masks），用户可以瞬间切换&ldquo;高情商&rdquo;、&ldquo;幽默&rdquo;或&ldquo;犀利&rdquo;模式，优雅地应对各种社交场合。
+          </p>
+        </section>
+
+        <section className="grid grid-cols-1 gap-4 md:grid-cols-2">
+          <div className="bg-secondary/30 border-border/50 rounded-2xl border p-6">
+            <h4 className="mb-2 flex items-center gap-2 font-bold">
+              <span className="text-xl">🎭</span> Persona System
+            </h4>
+            <p className="text-muted-foreground text-sm">
+              设计了独特的&ldquo;面具&rdquo;系统，每个面具对应一套独立的 Prompt
+              和语气参数。用户选择面具后，AI 会自动代入该角色进行回复生成。
+            </p>
+          </div>
+          <div className="bg-secondary/30 border-border/50 rounded-2xl border p-6">
+            <h4 className="mb-2 flex items-center gap-2 font-bold">
+              <span className="text-xl">📱</span> Native Feel
+            </h4>
+            <p className="text-muted-foreground text-sm">
+              使用 React Native (Expo) 开发，从触觉反馈 (Haptics) 到页面转场
+              (Reanimated)，每一个交互细节都严格遵循 iOS Human Interface
+              Guidelines。
+            </p>
+          </div>
+        </section>
+
+        <section className="space-y-4">
+          <CodeBlock
+            language="typescript"
+            title="Persona Context Management"
+            code={`const MASKS = {
+  'high-eq': {
+    systemPrompt: "You are a master of social etiquette...",
+    temperature: 0.7
+  },
+  'savage': {
+    systemPrompt: "You are witty and sarcastic...",
+    temperature: 0.9
+  }
+};
+
+const generateReply = async (input, maskId) => {
+  const config = MASKS[maskId];
+  // Dynamic Context Injection
+  return await aiService.chat(input, config);
+}`}
+          />
+        </section>
       </div>
     );
   }
 
   if (projectId === 'note-pwa') {
     return (
-      <div className="space-y-8">
-        <div className="space-y-4">
-          <h3 className="text-xl font-bold">PWA 离线能力</h3>
-          <p className="text-muted-foreground leading-relaxed">
-            利用 Service Worker 和 IndexedDB 实现无网环境下的完整读写体验。
-          </p>
-          <div className="bg-secondary/30 border-border/50 flex aspect-video w-full items-center justify-center rounded-xl border">
-            <span className="text-muted-foreground">
-              PWA 离线模式 / 安装提示截图
+      <div className="space-y-12">
+        <section className="space-y-4">
+          <div className="mb-2 flex items-center gap-2 text-yellow-600">
+            <span className="rounded-md bg-yellow-100 p-1">
+              <WifiOff className="h-4 w-4" />
+            </span>
+            <span className="text-sm font-bold tracking-wider uppercase">
+              Technical Challenge
             </span>
           </div>
-        </div>
+          <h3 className="text-2xl font-bold">挑战 Web 应用的极限：离线可用</h3>
+          <p className="text-muted-foreground text-lg leading-relaxed">
+            市面上的笔记应用大多依赖网络，即便支持离线，也往往功能阉割。我的目标是打造一个{' '}
+            <strong>Local-First</strong> 的 Web 应用。
+            <br />
+            <br />
+            <strong>核心价值：</strong>{' '}
+            无论是在飞机上还是信号差的地下室，用户都能毫无延迟地打开应用、记录灵感。数据优先存储在本地
+            (IndexedDB)，网络恢复后自动静默同步。
+          </p>
+        </section>
+
+        <section className="grid grid-cols-1 gap-4 md:grid-cols-3">
+          <div className="rounded-xl border border-yellow-500/20 bg-yellow-500/5 p-4">
+            <div className="mb-1 font-bold text-yellow-700">Service Worker</div>
+            <div className="text-muted-foreground text-xs">
+              精细化缓存策略 (Stale-while-revalidate) 确保秒开。
+            </div>
+          </div>
+          <div className="rounded-xl border border-orange-500/20 bg-orange-500/5 p-4">
+            <div className="mb-1 font-bold text-orange-700">IndexedDB</div>
+            <div className="text-muted-foreground text-xs">
+              使用 Dexie.js 封装，支持海量文本本地检索。
+            </div>
+          </div>
+          <div className="rounded-xl border border-green-500/20 bg-green-500/5 p-4">
+            <div className="mb-1 font-bold text-green-700">Installable</div>
+            <div className="text-muted-foreground text-xs">
+              符合 PWA 标准，可安装到桌面，体验接近原生 App。
+            </div>
+          </div>
+        </section>
       </div>
     );
   }
 
   if (projectId === 'blog') {
     return (
-      <div className="space-y-8">
-        <div className="space-y-4">
-          <h3 className="text-xl font-bold">混合渲染架构</h3>
-          <p className="text-muted-foreground leading-relaxed">
-            结合静态 SSG (Markdown) 的高性能与动态 SSR (MongoDB) 的灵活性。
-          </p>
-          <div className="bg-secondary/30 border-border/50 flex aspect-video w-full items-center justify-center rounded-xl border">
-            <span className="text-muted-foreground">
-              博客系统架构图 / 管理后台截图
+      <div className="space-y-12">
+        <section className="space-y-4">
+          <div className="mb-2 flex items-center gap-2 text-emerald-600">
+            <span className="rounded-md bg-emerald-100 p-1">
+              <Layout className="h-4 w-4" />
             </span>
+            <span className="text-sm font-bold tracking-wider uppercase">
+              Architecture Evolution
+            </span>
+          </div>
+          <h3 className="text-2xl font-bold">从静态到动态：架构的演进之路</h3>
+          <p className="text-muted-foreground text-lg leading-relaxed">
+            这个博客系统记录了我技术成长的缩影。最初它只是一个简单的 Markdown
+            解析器（SSG），随着文章增多和功能需求（评论、点赞）的增加，纯静态架构遭遇了瓶颈。
+            <br />
+            <br />
+            <strong>重构思路：</strong> 没有抛弃 SSG 的 SEO 优势，而是转向了{' '}
+            <strong>Hybrid Rendering (混合渲染)</strong>。
+          </p>
+        </section>
+
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+          <div className="bg-secondary/30 border-border/50 rounded-2xl border p-6">
+            <h4 className="mb-2 font-bold">Phase 1: Static (Past)</h4>
+            <ul className="text-muted-foreground list-disc space-y-1 pl-4 text-sm">
+              <li>Content: Markdown files</li>
+              <li>Deploy: GitHub Pages</li>
+              <li>Pros: Fast, Cheap</li>
+              <li>Cons: No interaction, slow build time</li>
+            </ul>
+          </div>
+          <div className="rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-6">
+            <h4 className="mb-2 font-bold text-emerald-700">
+              Phase 2: Hybrid (Now)
+            </h4>
+            <ul className="text-muted-foreground list-disc space-y-1 pl-4 text-sm">
+              <li>Content: MongoDB + MDX</li>
+              <li>Deploy: Vercel (Serverless)</li>
+              <li>Tech: Next.js ISR (Incremental Static Regeneration)</li>
+              <li>Value: 秒级发布，无需全量构建</li>
+            </ul>
           </div>
         </div>
       </div>
     );
   }
 
+  if (projectId === 'expense-tracker') {
+    return (
+      <div className="space-y-12">
+        <section className="space-y-4">
+          <div className="mb-2 flex items-center gap-2 text-cyan-600">
+            <span className="rounded-md bg-cyan-100 p-1">
+              <Wallet className="h-4 w-4" />
+            </span>
+            <span className="text-sm font-bold tracking-wider uppercase">
+              Engineering Deep Dive
+            </span>
+          </div>
+          <h3 className="text-2xl font-bold">
+            拥抱 Next.js 16：Server Actions 最佳实践
+          </h3>
+          <p className="text-muted-foreground text-lg leading-relaxed">
+            在 Next.js 16 发布之际，我决定用最新技术栈重构这个经典的 CRUD
+            应用。目标不仅是做一个记账本，而是探索{' '}
+            <strong>Modern Web Development</strong> 的最佳范式。
+            <br />
+            <br />
+            <strong>技术洞察：</strong> 传统的 API Route
+            模式导致前后端逻辑割裂、类型定义重复。Server Actions
+            允许我们在组件内部直接调用后端逻辑，实现了真正的{' '}
+            <strong>End-to-End Type Safety</strong>。
+          </p>
+        </section>
+
+        <section className="grid grid-cols-1 gap-4 md:grid-cols-3">
+          <div className="rounded-xl border border-cyan-500/20 bg-cyan-500/5 p-4">
+            <div className="mb-1 font-bold text-cyan-700">Zero-API</div>
+            <div className="text-muted-foreground text-xs">
+              无需编写 `/api/*` 路由，函数即接口，大幅减少胶水代码。
+            </div>
+          </div>
+          <div className="rounded-xl border border-blue-500/20 bg-blue-500/5 p-4">
+            <div className="mb-1 font-bold text-blue-700">Optimistic UI</div>
+            <div className="text-muted-foreground text-xs">
+              利用 `useOptimistic`
+              hook，在服务器响应前即时更新界面，消除网络延迟感。
+            </div>
+          </div>
+          <div className="rounded-xl border border-indigo-500/20 bg-indigo-500/5 p-4">
+            <div className="mb-1 font-bold text-indigo-700">Streaming</div>
+            <div className="text-muted-foreground text-xs">
+              配合 React Suspense，实现报表数据的流式加载与骨架屏展示。
+            </div>
+          </div>
+        </section>
+      </div>
+    );
+  }
+
+  if (projectId === 'ios-runplus') {
+    return (
+      <div className="space-y-12">
+        <section className="space-y-4">
+          <div className="mb-2 flex items-center gap-2 text-orange-600">
+            <span className="rounded-md bg-orange-100 p-1">
+              <Activity className="h-4 w-4" />
+            </span>
+            <span className="text-sm font-bold tracking-wider uppercase">
+              My Proudest Work
+            </span>
+          </div>
+          <h3 className="text-2xl font-bold">
+            不仅是跑步 App，更是移动端性能的试金石
+          </h3>
+          <p className="text-muted-foreground text-lg leading-relaxed">
+            RunPlus
+            是我投入精力最多、也是最引以为傲的个人项目。它看似简单，却涵盖了移动端开发中最硬核的挑战：
+            <strong>后台保活、卡顿优化与传感器融合</strong>。
+            <br />
+            <br />
+            <strong>极致追求：</strong> 为了在 React Native 上实现媲美原生 Keep
+            的轨迹平滑度，我没有使用任何现成的地图组件库，而是基于 Skia
+            手写了轨迹渲染层，将每一帧的渲染耗时控制在 16ms 以内。
+          </p>
+        </section>
+
+        <section className="grid grid-cols-1 gap-4 md:grid-cols-2">
+          <div className="bg-secondary/30 border-border/50 rounded-2xl border p-6">
+            <h4 className="mb-2 flex items-center gap-2 font-bold">
+              ⚡️ Background Location
+            </h4>
+            <p className="text-muted-foreground text-sm">
+              攻克了 iOS/Android 双端后台保活难题。实现了一套
+              &quot;Heartbeat&quot; 机制，结合 Kalman Filter (卡尔曼滤波)
+              算法，即使在 GPS 信号漂移时也能绘制出平滑的跑步轨迹。
+            </p>
+          </div>
+          <div className="rounded-2xl border border-orange-500/30 bg-orange-500/10 p-6">
+            <h4 className="mb-2 flex items-center gap-2 font-bold">
+              🗺️ Custom Map Renderer
+            </h4>
+            <p className="text-muted-foreground text-sm">
+              摒弃 WebView 地图，使用 react-native-skia 直接在 GPU
+              层绘制路径与配速热力图。性能提升 300%，彻底告别掉帧。
+            </p>
+          </div>
+        </section>
+
+        <section className="space-y-4">
+          <h3 className="text-xl font-bold">
+            核心算法：卡尔曼滤波 (Kalman Filter)
+          </h3>
+          <CodeBlock
+            language="typescript"
+            title="平滑轨迹去噪"
+            code={`class KalmanFilter {
+  constructor(processNoise, measurementNoise) {
+    this.R = measurementNoise; // 测量噪声
+    this.Q = processNoise;     // 过程噪声
+    this.p = 0;                // 估计误差协方差
+  }
+
+  filter(measurement) {
+    // 预测更新
+    this.p = this.p + this.Q;
+    // 测量更新 (Kalman Gain)
+    const K = this.p / (this.p + this.R);
+    this.x = this.x + K * (measurement - this.x);
+    this.p = (1 - K) * this.p;
+    return this.x;
+  }
+}`}
+          />
+        </section>
+      </div>
+    );
+  }
+
   // 默认通用内容
   return (
-    <div className="space-y-8">
+    <div className="space-y-12">
       <div className="space-y-4">
-        <h3 className="text-xl font-bold">技术挑战</h3>
-        <p className="text-muted-foreground leading-relaxed">
-          面对复杂的业务需求，系统性能和可维护性面临挑战。通过引入先进的技术方案，完成了核心功能的优化与重构。
+        <h3 className="text-xl font-bold">Project Overview</h3>
+        <p className="text-muted-foreground text-lg leading-relaxed">
+          {project.fullDescription}
         </p>
         <div className="bg-secondary/30 border-border/50 flex aspect-video w-full items-center justify-center rounded-xl border">
           <span className="text-muted-foreground text-sm">
-            项目演示截图 / 架构图占位
+            Project Demo / Architecture Diagram
           </span>
         </div>
       </div>
@@ -1117,11 +1483,10 @@ export async function analyzeEmotion(content: string) {
 
 // 代码块组件
 function CodeBlock({
-  language,
   title,
   code,
 }: {
-  language: string;
+  language?: string;
   title?: string;
   code: string;
 }) {

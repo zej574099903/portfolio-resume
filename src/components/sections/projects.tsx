@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
+import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   ArrowUpRight,
@@ -16,7 +17,20 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 
 export function ProjectsSection() {
-  const [activeTab, setActiveTab] = useState<'company' | 'personal'>('company');
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const pathname = usePathname();
+
+  // Initialize from URL or default to 'company'
+  const activeTab =
+    (searchParams.get('tab') as 'company' | 'personal') || 'company';
+
+  const setActiveTab = (tab: 'company' | 'personal') => {
+    const params = new URLSearchParams(searchParams.toString());
+    params.set('tab', tab);
+    // Use replace to update URL without scrolling, preserving state
+    router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+  };
 
   // Filters State
   const [companyFilter, setCompanyFilter] = useState<string>('All');
