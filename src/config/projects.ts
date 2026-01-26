@@ -17,6 +17,8 @@ export interface Project {
   role: string;
   period: string;
   tech: string[];
+  company: string;
+  type: 'Company' | 'Personal';
   category:
     | 'Architecture'
     | 'Performance'
@@ -27,9 +29,11 @@ export interface Project {
   metrics: { label: string; value: string }[];
   icon: LucideIcon;
   color: string;
+  link?: string; // For personal projects
 }
 
 export const PROJECTS: Project[] = [
+  // --- Silergy Company Projects ---
   {
     id: 'silergy-erp',
     title: 'Silergy Enterprise ERP',
@@ -40,6 +44,8 @@ export const PROJECTS: Project[] = [
     role: 'Tech Lead',
     period: '2025',
     tech: ['React 18', 'Umi Max', 'TypeScript', 'Ant Design Pro'],
+    company: 'Silergytest',
+    type: 'Company',
     category: 'Architecture',
     metrics: [
       { label: 'Modules', value: '12+' },
@@ -57,6 +63,8 @@ export const PROJECTS: Project[] = [
     role: 'Lead Developer',
     period: '2025',
     tech: ['UniApp', 'Vue', 'HTML5+', 'uView'],
+    company: 'Silergytest',
+    type: 'Company',
     category: 'Mobile',
     metrics: [
       { label: 'Efficiency', value: '+80%' },
@@ -74,6 +82,8 @@ export const PROJECTS: Project[] = [
     role: 'Lead Developer',
     period: '2025',
     tech: ['UniApp', 'Canvas', 'WebSocket', 'DCloud'],
+    company: 'Silergytest',
+    type: 'Company',
     category: 'Visualization',
     metrics: [
       { label: 'Latency', value: '<50ms' },
@@ -92,6 +102,8 @@ export const PROJECTS: Project[] = [
     role: 'Tech Lead',
     period: '2024',
     tech: ['React', 'OAuth2', 'Ant Design', 'Umi'],
+    company: 'Silergytest',
+    type: 'Company',
     category: 'Architecture',
     metrics: [
       { label: 'Apps', value: '10+' },
@@ -100,6 +112,8 @@ export const PROJECTS: Project[] = [
     icon: LayoutGrid,
     color: 'text-indigo-600',
   },
+
+  // --- Previous Company Projects ---
   {
     id: 'simulation-platform',
     title: '智能驾驶数据仿真平台',
@@ -109,6 +123,8 @@ export const PROJECTS: Project[] = [
     role: 'Frontend Lead',
     period: '2023',
     tech: ['Vue3', 'TypeScript', 'Qiankun', 'ECharts', 'Node.js'],
+    company: 'DingSheng',
+    type: 'Company',
     category: 'Architecture',
     metrics: [
       { label: 'Build Speed', value: '+50%' },
@@ -126,6 +142,8 @@ export const PROJECTS: Project[] = [
     role: 'Senior Developer',
     period: '2022',
     tech: ['React', 'Redux', 'Virtual List', 'WebSocket'],
+    company: 'GongBao',
+    type: 'Company',
     category: 'Performance',
     metrics: [
       { label: 'Data', value: '100k Rows' },
@@ -143,6 +161,8 @@ export const PROJECTS: Project[] = [
     role: 'Core Developer',
     period: '2024',
     tech: ['Vue3', 'Video.js', 'WebRTC', 'Vite'],
+    company: 'DingSheng',
+    type: 'Company',
     category: 'Architecture',
     metrics: [
       { label: 'Size', value: '-60%' },
@@ -160,6 +180,8 @@ export const PROJECTS: Project[] = [
     role: 'Developer',
     period: '2021',
     tech: ['Vue2', 'DataV', 'Canvas', 'WebSocket'],
+    company: 'GongBao',
+    type: 'Company',
     category: 'Visualization',
     metrics: [
       { label: 'Update', value: 'ms-level' },
@@ -177,6 +199,8 @@ export const PROJECTS: Project[] = [
     role: 'Full Stack',
     period: '2020',
     tech: ['Vue2', 'ElementUI', 'Node.js', 'Excel'],
+    company: 'GongBao',
+    type: 'Company',
     category: 'Architecture',
     metrics: [
       { label: 'Upload', value: 'Resumable' },
@@ -194,6 +218,8 @@ export const PROJECTS: Project[] = [
     role: 'Mobile Lead',
     period: '2019',
     tech: ['Uniapp', 'Vant', 'WeChat', 'Swiper'],
+    company: 'KaiNai',
+    type: 'Company',
     category: 'Mobile',
     metrics: [
       { label: 'Platform', value: 'Cross-App' },
@@ -201,5 +227,27 @@ export const PROJECTS: Project[] = [
     ],
     icon: Smartphone,
     color: 'text-pink-500',
+  },
+
+  // --- Personal Projects (Placeholders) ---
+  {
+    id: 'personal-component-lib',
+    title: 'My React UI Kit',
+    description: '个人维护的轻量级 React 组件库，专注于极致的动画交互体验。',
+    fullDescription:
+      '出于兴趣开发的个人组件库探索。尝试了 Headless UI 的设计理念，结合 Framer Motion 实现了丰富的微交互动画。包含 Button, Modal, Drawer 等常用组件。',
+    role: 'Creator',
+    period: '2024',
+    tech: ['React', 'TypeScript', 'Framer Motion', 'Tailwind'],
+    company: 'Personal',
+    type: 'Personal',
+    category: 'Open Source',
+    metrics: [
+      { label: 'Stars', value: 'N/A' },
+      { label: 'Size', value: 'Light' },
+    ],
+    icon: Layout,
+    color: 'text-cyan-500',
+    link: 'https://github.com/yourusername/ui-kit',
   },
 ];
