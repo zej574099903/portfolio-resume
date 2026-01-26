@@ -166,6 +166,150 @@ export default function ProjectPage({
 
 // 根据项目ID渲染技术细节
 function renderTechnicalDetails(projectId: string) {
+  if (projectId === 'silergy-erp') {
+    return (
+      <div className="space-y-8">
+        <div className="space-y-4">
+          <h3 className="text-xl font-bold">系统架构挑战</h3>
+          <p className="text-muted-foreground leading-relaxed">
+            企业级 ERP 系统包含 WMS、CRM 等 12+ 子模块，面临：
+          </p>
+          <ul className="text-muted-foreground list-disc space-y-2 pl-6">
+            <li>超大规模应用（500+页面）的构建性能与状态管理难题</li>
+            <li>复杂表单与报表的复用性需求，需避免重复造轮子</li>
+            <li>多角色权限控制（RBAC）的细粒度实现</li>
+          </ul>
+        </div>
+
+        <div className="space-y-4">
+          <h3 className="text-xl font-bold">Umi Max + ProComponents 工程化</h3>
+          <p className="text-muted-foreground leading-relaxed">
+            基于 Umi Max 插件体系与 Ant Design Pro
+            高级组件，实现低代码式开发体验。
+          </p>
+
+          <CodeBlock
+            language="typescript"
+            title="配置化表单开发"
+            code={`// schemas/wms/inventory.ts
+export const columns: ProColumns<InventoryItem>[] = [
+  {
+    title: '物料编码',
+    dataIndex: 'sku',
+    copyable: true,
+  },
+  {
+    title: '库存状态',
+    dataIndex: 'status',
+    valueEnum: {
+      normal: { text: '正常', status: 'Success' },
+      frozen: { text: '冻结', status: 'Error' },
+    },
+  },
+  {
+    title: '操作',
+    valueType: 'option',
+    render: (_, record) => [
+      <a key="edit" onClick={() => handleEdit(record)}>编辑</a>,
+      <TableDropdown key="more" menus={menuConfig} />,
+    ],
+  },
+];`}
+          />
+        </div>
+
+        <div className="space-y-4">
+          <h3 className="text-xl font-bold">项目价值</h3>
+          <div className="grid grid-cols-2 gap-4">
+            <div className="rounded-xl border border-blue-500/20 bg-blue-500/5 p-4">
+              <div className="mb-1 text-2xl font-bold">
+                <span className="text-blue-500">12+</span> Modules
+              </div>
+              <div className="text-muted-foreground text-xs">支撑核心业务</div>
+            </div>
+            <div className="rounded-xl border border-green-500/20 bg-green-500/5 p-4">
+              <div className="mb-1 text-2xl font-bold">
+                <span className="text-green-500">统一</span> 规范
+              </div>
+              <div className="text-muted-foreground text-xs">
+                研发效率提升50%
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (projectId === 'silergy-pda') {
+    return (
+      <div className="space-y-8">
+        <div className="space-y-4">
+          <h3 className="text-xl font-bold">移动端作业挑战</h3>
+          <p className="text-muted-foreground leading-relaxed">
+            仓储环境复杂，PDA 设备性能有限，需解决：
+          </p>
+          <ul className="text-muted-foreground list-disc space-y-2 pl-6">
+            <li>弱网环境下的数据同步与离线作业能力</li>
+            <li>高频扫码场景下的响应速度与识别率</li>
+            <li>跨平台（Android PDA / iOS 管理端）兼容性</li>
+          </ul>
+        </div>
+
+        <div className="space-y-4">
+          <h3 className="text-xl font-bold">扫码引擎优化</h3>
+          <p className="text-muted-foreground leading-relaxed">
+            封装统一的扫码 Hook，适配 PDA 广播模式与摄像头模式。
+          </p>
+
+          <CodeBlock
+            language="typescript"
+            title="多模式扫码适配"
+            code={`// hooks/useScan.ts
+export function useScan(onScan: (code: string) => void) {
+  // 监听 PDA 广播 (BroadcastReceiver)
+  useEffect(() => {
+    const handleBroadcast = (intent) => {
+      if (intent.action === 'SCAN_ACTION') {
+        onScan(intent.getStringExtra('barcode'));
+      }
+    };
+    plus.globalEvent.addEventListener('newintent', handleBroadcast);
+    return () => plus.globalEvent.removeEventListener('newintent', handleBroadcast);
+  }, []);
+
+  // 摄像头扫码 (HTML5+)
+  const scanCamera = () => {
+    uni.scanCode({
+      success: (res) => onScan(res.result),
+    });
+  };
+
+  return { scanCamera };
+}`}
+          />
+        </div>
+
+        <div className="space-y-4">
+          <h3 className="text-xl font-bold">关键成果</h3>
+          <div className="grid grid-cols-2 gap-4">
+            <div className="rounded-xl border border-green-500/20 bg-green-500/5 p-4">
+              <div className="mb-1 text-2xl font-bold">
+                <span className="text-green-500">无纸化</span>
+              </div>
+              <div className="text-muted-foreground text-xs">作业效率+80%</div>
+            </div>
+            <div className="rounded-xl border border-orange-500/20 bg-orange-500/5 p-4">
+              <div className="mb-1 text-2xl font-bold">
+                <span className="text-orange-500">离线</span> 支持
+              </div>
+              <div className="text-muted-foreground text-xs">本地缓存机制</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
   if (projectId === 'simulation-platform') {
     return (
       <div className="space-y-8">

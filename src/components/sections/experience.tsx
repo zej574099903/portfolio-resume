@@ -17,6 +17,18 @@ interface Job {
 
 const EXPERIENCES: Job[] = [
   {
+    company: 'Silergytest (硅力杰)',
+    role: 'Tech Lead / 独立负责人',
+    period: '2024.12 - Present',
+    achievements: [
+      '独立负责 Silergy 企业级数字化基础设施建设，从0到1搭建 ERP、EP、BI 及 PDA 移动端系统矩阵。',
+      '设计并落地基于 **Umi Max + Ant Design Pro** 的前端架构，制定开发规范，支撑 12+ 核心业务模块的高效迭代。',
+      '主导 **UniApp** 移动端开发，集成 HTML5+ 扫码与离线缓存能力，实现仓储作业的无纸化与实时化闭环。',
+    ],
+    tech: ['React 18', 'Umi Max', 'TypeScript', 'UniApp', 'Ant Design Pro'],
+    highlight: true,
+  },
+  {
     company: '浙江鼎胜环保有限公司',
     role: 'Frontend Team Lead',
     period: '2022.11 - 2024.12',

@@ -29,6 +29,41 @@ export interface Project {
 
 export const PROJECTS: Project[] = [
   {
+    id: 'silergy-erp',
+    title: 'Silergy Enterprise ERP',
+    description:
+      '从0到1构建的企业级 ERP 系统，集成 WMS、CRM、SCM 等12+核心模块。',
+    fullDescription:
+      '独立负责 Silergytest 数字化基础设施建设。基于 Umi Max + Ant Design Pro 搭建企业级前端架构，实现了包含资产管理(AMS)、客户关系(CRM)、供应链(SCM)及核心的仓储管理(WMS)在内的全套业务系统。项目包含 500+ 页面，通过高度组件化和工程化手段，保证了系统的可维护性与扩展性。',
+    role: 'Tech Lead',
+    period: '2025',
+    tech: ['React 18', 'Umi Max', 'TypeScript', 'Ant Design Pro'],
+    category: 'Architecture',
+    metrics: [
+      { label: 'Modules', value: '12+' },
+      { label: 'Pages', value: '500+' },
+    ],
+    icon: Database,
+    color: 'text-blue-600',
+  },
+  {
+    id: 'silergy-pda',
+    title: 'Silergy Smart PDA',
+    description: '配套 ERP 的移动端作业系统，实现仓库作业无纸化与实时化。',
+    fullDescription:
+      '为解决仓储作业痛点开发的移动端系统。基于 UniApp 实现跨平台发布，集成 HTML5+ 扫码能力，支持入库、出库、盘点等核心流程。通过本地缓存优化，确保在弱网环境下也能流畅作业。',
+    role: 'Lead Developer',
+    period: '2025',
+    tech: ['UniApp', 'Vue', 'HTML5+', 'uView'],
+    category: 'Mobile',
+    metrics: [
+      { label: 'Efficiency', value: '+80%' },
+      { label: 'Platform', value: 'Cross-App' },
+    ],
+    icon: Smartphone,
+    color: 'text-green-600',
+  },
+  {
     id: 'simulation-platform',
     title: '智能驾驶数据仿真平台',
     description: '基于 Micro-Frontend 的大规模仿真系统，支持车辆追踪与回放。',
