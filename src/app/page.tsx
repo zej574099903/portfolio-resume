@@ -1,4 +1,4 @@
-import { HeroSection } from '@/components/sections/hero';
+import { HeroSection } from '@/components/sections/hero-v2';
 import { AboutSection } from '@/components/sections/about';
 import { ExperienceSection } from '@/components/sections/experience';
 import { ProjectsSection } from '@/components/sections/projects';

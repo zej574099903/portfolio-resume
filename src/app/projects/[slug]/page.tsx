@@ -972,23 +972,6 @@ Key tasks:
           </div>
         </section>
 
-        {/* 视觉展示 */}
-        <section className="space-y-4">
-          <h3 className="text-xl font-bold">产品界面演示</h3>
-          <div className="bg-secondary/30 border-border/50 group relative flex aspect-video w-full items-center justify-center overflow-hidden rounded-xl border">
-            {/* 此处预留真实截图位置，目前使用 CSS 模拟占位效果 */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-purple-500/10 to-blue-500/10" />
-            <div className="z-10 space-y-2 text-center">
-              <span className="text-muted-foreground block font-mono text-sm">
-                Run: npm run dev
-              </span>
-              <span className="text-muted-foreground block text-xs opacity-70">
-                Screen Capture Placeholder
-              </span>
-            </div>
-          </div>
-        </section>
-
         {/* 技术深度 */}
         <section className="space-y-4">
           <h3 className="text-xl font-bold">
