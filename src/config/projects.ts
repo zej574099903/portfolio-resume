@@ -8,9 +8,12 @@ import {
   ShieldCheck,
   LayoutGrid,
   Sparkles,
-  BookOpen,
   Wallet,
   Activity,
+  Bot,
+  PenTool,
+  Book,
+  StickyNote,
 } from 'lucide-react';
 
 export interface Project {
@@ -235,6 +238,86 @@ export const PROJECTS: Project[] = [
 
   // --- Personal Projects ---
   {
+    id: 'story-craft',
+    title: 'StoryCraft - 魔法绘本',
+    description: 'AI 驱动的儿童互动绘本生成器，集成语音朗读与 3D 翻页效果。',
+    fullDescription:
+      '专为儿童设计的 AI 绘本创作平台。基于 Next.js 16 + MongoDB 构建，集成智谱 GLM-4 生成故事，Pollinations.ai 实时绘制插画。内置 TTS 语音朗读与 Turn.js 3D 翻页效果，为孩子提供沉浸式的阅读体验。',
+    role: 'Product Creator',
+    period: '2024',
+    tech: ['Next.js 16', 'ZhipuAI', 'MongoDB', 'NextAuth'],
+    company: 'Personal',
+    type: 'Personal',
+    category: 'Architecture',
+    metrics: [
+      { label: 'AI', value: 'Multi-Model' },
+      { label: 'UX', value: 'Immersive' },
+    ],
+    icon: PenTool,
+    color: 'text-purple-500',
+    link: 'https://story-craft-demo.vercel.app',
+  },
+  {
+    id: 'note-pwa',
+    title: 'AI Smart Notes PWA',
+    description: '支持离线访问的智能笔记应用，集成 OpenAI 辅助写作。',
+    fullDescription:
+      '探索 PWA (Progressive Web App) 极限的笔记应用。具备完整的离线读写能力，通过 Service Worker 缓存策略实现秒开。内置 OpenAI 助手，可对笔记内容进行润色、扩写与摘要生成。',
+    role: 'Full Stack',
+    period: '2024',
+    tech: ['Next.js', 'PWA', 'OpenAI', 'IndexedDB'],
+    company: 'Personal',
+    type: 'Personal',
+    category: 'Architecture',
+    metrics: [
+      { label: 'Access', value: 'Offline' },
+      { label: 'AI', value: 'Assistant' },
+    ],
+    icon: StickyNote,
+    color: 'text-yellow-500',
+    link: 'https://note-pwa-demo.vercel.app',
+  },
+  {
+    id: 'the-mouth-app',
+    title: 'The Mouth - 嘴替',
+    description: 'React Native 开发的 AI 社交辅助 App，内置多种人格面具。',
+    fullDescription:
+      '基于 React Native (Expo) 开发的移动端 AI 社交助手。针对"社恐"人群设计，提供多种人格面具（高情商、幽默、反击等）。UI 高度仿原生 iOS 风格，通过 WebSocket 实时连接 AI 生成回复，支持一键复制与历史记录。',
+    role: 'Mobile Dev',
+    period: '2024',
+    tech: ['React Native', 'Expo', 'WebSocket', 'Reanimated'],
+    company: 'Personal',
+    type: 'Personal',
+    category: 'Mobile',
+    metrics: [
+      { label: 'Platform', value: 'iOS/Android' },
+      { label: 'UI', value: 'Native-like' },
+    ],
+    icon: Bot,
+    color: 'text-indigo-500',
+    // link: 'https://apps.apple.com/app/id...',
+  },
+  {
+    id: 'blog',
+    title: 'Next.js Fullstack Blog',
+    description: '从静态 Markdown 转型为 DB 驱动的全栈博客系统。',
+    fullDescription:
+      '一个可扩展的技术博客系统。初期采用静态 Markdown 渲染，后期重构为基于 MongoDB 的动态内容系统。设计了混合渲染架构 (Hybrid Rendering)，既保留了静态页面的 SEO 优势，又支持在线 CMS 管理与动态数据更新。',
+    role: 'Full Stack',
+    period: '2024',
+    tech: ['Next.js', 'MongoDB', 'Tailwind', 'MDX'],
+    company: 'Personal',
+    type: 'Personal',
+    category: 'Infrastructure',
+    metrics: [
+      { label: 'SEO', value: '100%' },
+      { label: 'CMS', value: 'Custom' },
+    ],
+    icon: Book,
+    color: 'text-emerald-500',
+    link: 'https://my-blog-demo.vercel.app',
+  },
+  {
     id: 'emmo',
     title: 'Emmo - AI Emotion Diary',
     description: '基于智谱 AI 的情绪分析日记应用，探索心理健康与大模型的结合。',
@@ -253,26 +336,6 @@ export const PROJECTS: Project[] = [
     icon: Sparkles,
     color: 'text-pink-500',
     link: 'https://emmo-demo.vercel.app',
-  },
-  {
-    id: 'sermon-ai',
-    title: 'Sermon AI Assistant',
-    description: '本地运行的 RAG 知识库工具，基于 200+ 垂直领域书籍检索。',
-    fullDescription:
-      '针对特定领域知识检索的痛点，开发了这款本地 RAG (Retrieval-Augmented Generation) 工具。利用 ChromaDB 构建向量索引，实现了对 PDF/Epub 书籍的精准语义检索与引用。重点解决了通用大模型在垂直领域"幻觉"严重的问题，并确保了数据隐私完全本地化。',
-    role: 'Creator',
-    period: '2024',
-    tech: ['Python', 'LangChain', 'ChromaDB', 'RAG'],
-    company: 'Personal',
-    type: 'Personal',
-    category: 'Open Source',
-    metrics: [
-      { label: 'Books', value: '200+' },
-      { label: 'Privacy', value: '100%' },
-    ],
-    icon: BookOpen,
-    color: 'text-emerald-600',
-    // link: 'https://github.com/yourusername/sermon-ai',
   },
   {
     id: 'expense-tracker',
@@ -294,25 +357,5 @@ export const PROJECTS: Project[] = [
     icon: Wallet,
     color: 'text-cyan-600',
     link: 'https://expense-demo.vercel.app',
-  },
-  {
-    id: 'ios-runplus',
-    title: 'RunPlus Mobile',
-    description:
-      '基于 React Native 的跑步追踪 App，探索移动端传感器与地图集成。',
-    fullDescription:
-      '一款专注于极简体验的跑步追踪应用。使用 React Native 开发，调用移动端原生 GPS 与加速度传感器接口，实现了精准的轨迹记录与配速计算。项目中重点解决了后台定位保活与地图组件的跨平台兼容性问题。',
-    role: 'Mobile Dev',
-    period: '2023',
-    tech: ['React Native', 'Expo', 'Maps SDK', 'Sensors'],
-    company: 'Personal',
-    type: 'Personal',
-    category: 'Mobile',
-    metrics: [
-      { label: 'Platform', value: 'iOS/Android' },
-      { label: 'Size', value: '<20MB' },
-    ],
-    icon: Activity,
-    color: 'text-orange-500',
   },
 ];

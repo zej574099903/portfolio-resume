@@ -1002,18 +1002,58 @@ export async function analyzeEmotion(content: string) {
     );
   }
 
-  if (projectId === 'sermon-ai') {
+  if (projectId === 'story-craft') {
     return (
       <div className="space-y-8">
         <div className="space-y-4">
-          <h3 className="text-xl font-bold">本地化 RAG 架构</h3>
+          <h3 className="text-xl font-bold">魔法创作流程</h3>
           <p className="text-muted-foreground leading-relaxed">
-            为保障隐私，全链路本地运行。使用 ChromaDB 作为向量存储，LangChain
-            进行检索增强。
+            StoryCraft 将 AI
+            技术无缝融入亲子阅读场景。只需一个创意，即可生成完整的绘本。
           </p>
           <div className="bg-secondary/30 border-border/50 flex aspect-video w-full items-center justify-center rounded-xl border">
             <span className="text-muted-foreground">
-              Sermon AI 运行界面截图占位
+              生成的绘本页面截图 / 翻页效果演示
+            </span>
+          </div>
+        </div>
+
+        <div className="space-y-4">
+          <h3 className="text-xl font-bold">技术栈亮点</h3>
+          <div className="grid grid-cols-2 gap-4">
+            <div className="rounded-xl border border-purple-500/20 bg-purple-500/10 p-4">
+              <div className="mb-1 text-lg font-bold text-purple-600">
+                Next.js 16
+              </div>
+              <div className="text-muted-foreground text-xs">
+                Server Actions + App Router
+              </div>
+            </div>
+            <div className="rounded-xl border border-blue-500/20 bg-blue-500/10 p-4">
+              <div className="mb-1 text-lg font-bold text-blue-600">
+                Multi-AI
+              </div>
+              <div className="text-muted-foreground text-xs">
+                ZhipuGLM (Text) + Flux (Image)
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (projectId === 'the-mouth-app') {
+    return (
+      <div className="space-y-8">
+        <div className="space-y-4">
+          <h3 className="text-xl font-bold">React Native 原生体验</h3>
+          <p className="text-muted-foreground leading-relaxed">
+            极致模仿 iOS 原生设计规范，提供流畅的“嘴替”体验。
+          </p>
+          <div className="bg-secondary/30 border-border/50 flex aspect-video w-full items-center justify-center rounded-xl border">
+            <span className="text-muted-foreground">
+              The Mouth App 运行截图 (iOS Simulator)
             </span>
           </div>
         </div>
@@ -1021,14 +1061,35 @@ export async function analyzeEmotion(content: string) {
     );
   }
 
-  if (projectId === 'ios-runplus') {
+  if (projectId === 'note-pwa') {
     return (
       <div className="space-y-8">
         <div className="space-y-4">
-          <h3 className="text-xl font-bold">React Native 移动端实践</h3>
+          <h3 className="text-xl font-bold">PWA 离线能力</h3>
+          <p className="text-muted-foreground leading-relaxed">
+            利用 Service Worker 和 IndexedDB 实现无网环境下的完整读写体验。
+          </p>
           <div className="bg-secondary/30 border-border/50 flex aspect-video w-full items-center justify-center rounded-xl border">
             <span className="text-muted-foreground">
-              RunPlus App 截图 (iOS/Android) 占位
+              PWA 离线模式 / 安装提示截图
+            </span>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (projectId === 'blog') {
+    return (
+      <div className="space-y-8">
+        <div className="space-y-4">
+          <h3 className="text-xl font-bold">混合渲染架构</h3>
+          <p className="text-muted-foreground leading-relaxed">
+            结合静态 SSG (Markdown) 的高性能与动态 SSR (MongoDB) 的灵活性。
+          </p>
+          <div className="bg-secondary/30 border-border/50 flex aspect-video w-full items-center justify-center rounded-xl border">
+            <span className="text-muted-foreground">
+              博客系统架构图 / 管理后台截图
             </span>
           </div>
         </div>
