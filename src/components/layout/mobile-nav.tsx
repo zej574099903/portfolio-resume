@@ -7,7 +7,12 @@ import { Menu, Zap } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+  SheetTitle,
+} from '@/components/ui/sheet';
 import { NavConfig } from '@/types/nav';
 
 interface MobileNavProps {
@@ -37,6 +42,8 @@ export function MobileNav({ navConfig }: MobileNavProps) {
           <div className="absolute top-[-20%] left-[-20%] h-[500px] w-[500px] rounded-full bg-purple-500/10 blur-[100px]" />
           <div className="absolute right-[-20%] bottom-[-20%] h-[500px] w-[500px] rounded-full bg-blue-500/10 blur-[100px]" />
         </div>
+
+        <SheetTitle className="sr-only">Mobile Menu</SheetTitle>
 
         <MobileLink
           href="/"
