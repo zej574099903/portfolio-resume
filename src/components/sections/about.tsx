@@ -2,13 +2,13 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion';
 import {
-  Database,
   Layout,
   Heart,
   Terminal,
   Cpu,
   Globe,
   Code2,
+  Sparkles,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useRef } from 'react';
@@ -178,24 +178,24 @@ export function AboutSection() {
             <BentoCard className="flex h-full flex-col items-center justify-between gap-4 p-6 transition-colors hover:border-purple-500/30 md:flex-row">
               <div className="flex items-center gap-4">
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-purple-500/10 text-purple-600">
-                  <Database className="h-6 w-6" />
+                  <Sparkles className="h-6 w-6" />
                 </div>
                 <div>
-                  <h4 className="text-lg font-bold">Full Stack Capable</h4>
+                  <h4 className="text-lg font-bold">Full Stack & AI Native</h4>
                   <p className="text-muted-foreground text-xs">
-                    数据库设计 (MySQL) 与 API 开发
+                    Next.js 全栈架构与大模型应用开发
                   </p>
                 </div>
               </div>
               <div className="flex gap-2">
                 <span className="bg-secondary text-secondary-foreground rounded-full px-3 py-1 font-mono text-xs">
-                  MySQL
+                  MongoDB
                 </span>
                 <span className="bg-secondary text-secondary-foreground rounded-full px-3 py-1 font-mono text-xs">
-                  Redis
+                  Server Actions
                 </span>
                 <span className="bg-secondary text-secondary-foreground rounded-full px-3 py-1 font-mono text-xs">
-                  Docker
+                  AI Integration
                 </span>
               </div>
             </BentoCard>
