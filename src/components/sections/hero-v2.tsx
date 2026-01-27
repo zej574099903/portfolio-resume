@@ -83,7 +83,7 @@ export function HeroSection() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="from-foreground to-foreground/50 bg-gradient-to-b bg-clip-text text-6xl leading-[0.9] font-black tracking-tighter text-transparent md:text-8xl lg:text-9xl"
+            className="from-foreground to-foreground/50 bg-gradient-to-b bg-clip-text text-5xl leading-[0.9] font-black tracking-tighter text-transparent sm:text-6xl md:text-8xl lg:text-9xl"
           >
             CRAFTING
           </motion.h1>
@@ -91,7 +91,7 @@ export function HeroSection() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="text-foreground relative text-6xl font-black tracking-tighter md:text-8xl lg:text-9xl"
+            className="text-foreground relative text-5xl font-black tracking-tighter sm:text-6xl md:text-8xl lg:text-9xl"
           >
             DIGITAL
           </motion.h1>
@@ -99,7 +99,7 @@ export function HeroSection() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="from-foreground to-foreground/50 bg-gradient-to-b bg-clip-text text-6xl leading-[0.9] font-black tracking-tighter text-transparent md:text-8xl lg:text-9xl"
+            className="from-foreground to-foreground/50 bg-gradient-to-b bg-clip-text text-5xl leading-[0.9] font-black tracking-tighter text-transparent sm:text-6xl md:text-8xl lg:text-9xl"
           >
             EXPERIENCES
           </motion.h1>
@@ -175,7 +175,7 @@ export function HeroSection() {
               </div>
               <div className="text-foreground font-medium">中国 · 杭州</div>
             </div>
-            <div className="flex gap-12 text-center md:text-right">
+            <div className="flex w-full justify-between gap-6 text-center md:w-auto md:justify-end md:gap-12 md:text-right">
               <div>
                 <div className="text-muted-foreground mb-1 text-xs tracking-widest uppercase">
                   从业经验
@@ -187,7 +187,7 @@ export function HeroSection() {
                   技术方向
                 </div>
                 <div className="text-foreground text-xl font-bold">
-                  前端开发工程师
+                  全栈架构 / AI
                 </div>
               </div>
             </div>

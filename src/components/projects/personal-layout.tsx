@@ -7,14 +7,13 @@ import { Button } from '@/components/ui/button';
 import {
   ArrowLeft,
   ExternalLink,
-  Github,
   Calendar,
   User,
   Sparkles,
 } from 'lucide-react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
-import { useRouter } from 'next/navigation';
+import React from 'react';
 
 interface PersonalProjectLayoutProps {
   project: Project;
@@ -26,7 +25,6 @@ export function PersonalProjectLayout({
   children,
 }: PersonalProjectLayoutProps) {
   const Icon = project.icon;
-  const router = useRouter();
 
   return (
     <main className="bg-background text-foreground min-h-screen pb-24">
@@ -109,14 +107,7 @@ export function PersonalProjectLayout({
                 </Button>
               )}
               {/* Dummy Source Code Link for demo */}
-              <Button
-                size="lg"
-                variant="outline"
-                className="bg-background/50 border-foreground/10 hover:bg-background/80 gap-2 rounded-full text-base backdrop-blur"
-              >
-                <Github className="h-4 w-4" />
-                Source Code
-              </Button>
+              {/* Dummy Source Code Link removed per request */}
             </div>
           </motion.div>
         </div>

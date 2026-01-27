@@ -255,7 +255,7 @@ export const PROJECTS: Project[] = [
     ],
     icon: PenTool,
     color: 'text-purple-500',
-    link: 'https://story-craft-demo.vercel.app',
+    link: 'https://zej-projects-nine.vercel.app/',
   },
   {
     id: 'note-pwa',
@@ -275,7 +275,7 @@ export const PROJECTS: Project[] = [
     ],
     icon: StickyNote,
     color: 'text-yellow-500',
-    link: 'https://note-pwa-demo.vercel.app',
+    // link: 'https://note-pwa-demo.vercel.app', // Private
   },
   {
     id: 'the-mouth-app',
@@ -295,7 +295,7 @@ export const PROJECTS: Project[] = [
     ],
     icon: Bot,
     color: 'text-indigo-500',
-    link: 'https://apps.apple.com/app/the-mouth',
+    // link: 'https://apps.apple.com/app/the-mouth', // Private
   },
   {
     id: 'blog',
@@ -315,7 +315,7 @@ export const PROJECTS: Project[] = [
     ],
     icon: Book,
     color: 'text-emerald-500',
-    link: 'https://my-blog-demo.vercel.app',
+    link: 'https://zej-projects.vercel.app/',
   },
   {
     id: 'emmo',
@@ -335,7 +335,7 @@ export const PROJECTS: Project[] = [
     ],
     icon: Sparkles,
     color: 'text-pink-500',
-    link: 'https://emmo-demo.vercel.app',
+    link: 'https://emmo-nine.vercel.app/',
   },
   {
     id: 'expense-tracker',
@@ -356,7 +356,27 @@ export const PROJECTS: Project[] = [
     ],
     icon: Wallet,
     color: 'text-cyan-600',
-    link: 'https://expense-demo.vercel.app',
+    link: 'https://expense-tracker-gray-nine-89.vercel.app/login',
+  },
+  {
+    id: 'smart-form',
+    title: 'Smart Form - 智能表单',
+    description: 'AI 驱动的动态表单生成器，支持自然语言一键生成复杂表单。',
+    fullDescription:
+      '探索 Form Infrastructure 的未来形态。Smart Form 不仅仅是一个拖拽式表单构建器，更是 AI Native 的表单生成引擎。用户只需输入"我想做一个员工满意度调查"，系统即可自动生成包含逻辑跳转、数据校验的完整表单。同时内置了基于 AI 的自动化数据分析看板。',
+    role: 'Product Creator',
+    period: '2024',
+    tech: ['Next.js', 'OpenAI', 'PostgreSQL', 'Dnd Kit'],
+    company: 'Personal',
+    type: 'Personal',
+    category: 'Architecture',
+    metrics: [
+      { label: 'Speed', value: '10x' },
+      { label: 'AI', value: 'Generative' },
+    ],
+    icon: Layout,
+    color: 'text-orange-600',
+    link: 'https://zej-projects-smart-form.vercel.app/',
   },
   {
     id: 'ios-runplus',
@@ -377,6 +397,6 @@ export const PROJECTS: Project[] = [
     ],
     icon: Activity,
     color: 'text-orange-500',
-    link: 'https://github.com/zhouenjun/runplus-demo',
+    // link: 'https://github.com/zhouenjun/runplus-demo', // Private
   },
 ];
