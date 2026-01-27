@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { HeroSection } from '@/components/sections/hero-v2';
 import { AboutSection } from '@/components/sections/about';
 import { ExperienceSection } from '@/components/sections/experience';
@@ -10,7 +11,9 @@ export default function Home() {
       <HeroSection />
       <AboutSection />
 
-      <ProjectsSection />
+      <Suspense fallback={<div>Loading projects...</div>}>
+        <ProjectsSection />
+      </Suspense>
 
       <section id="experience">
         <ExperienceSection />
