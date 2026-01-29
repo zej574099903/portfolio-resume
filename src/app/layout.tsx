@@ -42,6 +42,16 @@ export const metadata: Metadata = {
     title: 'Liora - 资深全栈工程师',
     description: '7年全栈开发与产品经验, 打造极致 Web 体验',
   },
+  manifest: '/manifest.json',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'black-translucent',
+    title: 'Liora CV',
+  },
+  icons: {
+    icon: '/icon.png',
+    apple: '/icon.png',
+  },
 };
 
 export default function RootLayout({

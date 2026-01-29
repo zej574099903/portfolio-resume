@@ -1,0 +1,16 @@
+{
+  "name": "Liora - 全栈工程师作品集",
+  "short_name": "Liora CV",
+  "description": "7年全栈开发经验, 专注于高性能 Web 应用构建与极致用户体验设计。",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "icons": [
+    {
+      "src": "/icon.png",
+      "sizes": "1024x1024",
+      "type": "image/png"
+    }
+  ]
+}
