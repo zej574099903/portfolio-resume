@@ -255,7 +255,7 @@ export const PROJECTS: Project[] = [
     ],
     icon: PenTool,
     color: 'text-purple-500',
-    link: 'https://zej-projects-nine.vercel.app/',
+    link: 'https://story.zhouenjun.top',
   },
   {
     id: 'note-pwa',
@@ -315,7 +315,7 @@ export const PROJECTS: Project[] = [
     ],
     icon: Book,
     color: 'text-emerald-500',
-    link: 'https://zej-projects.vercel.app/',
+    link: 'https://blog.zhouenjun.top',
   },
   {
     id: 'emmo',
@@ -335,7 +335,7 @@ export const PROJECTS: Project[] = [
     ],
     icon: Sparkles,
     color: 'text-pink-500',
-    link: 'https://emmo-nine.vercel.app/',
+    link: 'https://emmo.zhouenjun.top',
   },
   {
     id: 'expense-tracker',
@@ -356,7 +356,7 @@ export const PROJECTS: Project[] = [
     ],
     icon: Wallet,
     color: 'text-cyan-600',
-    link: 'https://expense-tracker-gray-nine-89.vercel.app/login',
+    link: 'https://expense.zhouenjun.top',
   },
   {
     id: 'smart-form',
@@ -376,7 +376,7 @@ export const PROJECTS: Project[] = [
     ],
     icon: Layout,
     color: 'text-orange-600',
-    link: 'https://zej-projects-smart-form.vercel.app/',
+    link: 'https://smartform.zhouenjun.top',
   },
   {
     id: 'ios-runplus',
